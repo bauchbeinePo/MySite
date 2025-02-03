@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="zimmerSuchen.css">
+</head>
+<body>
+    <header id="menu-header">  
+        <div><img src="../../Resources/White Trans Logo.png" id="logo"></div>     
+        <nav id="menu">
+            <ul>
+                <li><a href="#">Zimmer</a></li>
+                <li><a href="#">Restaurant</a></li>
+                <li><a href="#">Rezensionen</a></li>
+            </ul>
+        </nav>
+            <a href="../Anmelden/anmelden.html">
+                <button id="signin">Anmelden</button>
+            </a>
+    </header>
+
+    <form action="../Startseite/startseite.html" id="screen">
+        <h1>Zimmer suchen</h1>
+        <label for="">Kategorie:</label>
+        <select required>
+            <option>Standart</option>
+            <option>Premium</option>
+            <option>Luxus</option>
+        </select><br>
+        <br>
+        <label for="">Einzel-/Doppelzimmer:</label>
+        <select required>
+            <option>Einzelzimmer</option>
+            <option>Doppelzimmer</option>
+        </select><br>
+       <input type="submit" value="Zimmer Suchen" id="submit"><br>
+    </form>
+</body>
+</html>

@@ -37,6 +37,14 @@ label{
     max-width: 150px;
 }
 
+button:hover, #submit:hover, a:hover , a:hover{
+    background-color: #085eb5;
+}
+
+button:active, #submit:active, a:active , a:active{
+    background-color: #4fa7ff;
+}
+
 a{
     color: #0d86ff;
     text-decoration: none;
