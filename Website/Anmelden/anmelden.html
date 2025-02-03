@@ -7,17 +7,17 @@
     <link rel="stylesheet" href="anmelden.css">
 </head>
 <body>
-    <div id="screen">
+    <form action="../Startseite/startseite.html" id="screen">
         <h1>Anmelden</h1>
         <label for="">E-Mail Adresse:</label>
-        <input type="text" id="email">
+        <input type="text" id="email" required>
         <br>
         <label for="">Passwort:</label>
-        <input type="password" id="password"><br>
-        <a href="../Startseite/startseite.html"><button>Anmelden</button></a><br>
+        <input type="password" id="password" required><br>
+       <input type="submit" value="Anmelden" id="submit"><br>
         <a href="">Passwort vergessen?</a><br><br>
         <a href="">Registrieren</a><br><br><br><br><br><br>
         <a href="../Startseite/startseite.html" id="gast">als Gast fortfahren</a>
-    </div>
+    </form>
 </body>
 </html>

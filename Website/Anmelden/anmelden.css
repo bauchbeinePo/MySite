@@ -27,13 +27,14 @@ label{
     margin-bottom: 10px;
 }
 
-button{
+#submit{
     background-color: #0d86ff;
     color: white;
     font-size: 1.1em;
     border-radius: 7px;
     margin-bottom: 10px;
     padding: 6px 25px;
+    max-width: 150px;
 }
 
 a{
