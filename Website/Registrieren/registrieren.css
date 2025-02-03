@@ -11,6 +11,8 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-bottom: 10%;
+    margin-top: 10%;
   
 }
 
@@ -27,7 +29,7 @@ label{
     margin-bottom: 10px;
 }
 
-button{
+#submit{
     background-color: #0d86ff;
     color: white;
     font-size: 1.1em;
@@ -41,7 +43,33 @@ a{
     text-decoration: none;
 }
 
-#gast{
-    color: rgb(62, 62, 62);
-    text-decoration: underline;
+#postleitzahl{
+    flex: 1;
+    width: 17%;
 }
+
+#stadt{
+    flex: 1;
+    width: 33%;
+}
+
+#hausnummer{
+    flex: 1;
+    width: 17%;
+}
+
+#strasse{
+    flex: 1;
+    width: 33%;
+}
+
+select{
+    font-size: 1.2em;
+    border-radius: 10px;
+    width: 300px;
+    height: auto;
+    border: 1.6px solid #000000;
+}
+
+
+
