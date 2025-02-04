@@ -4,14 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-    <link rel="stylesheet" href="zimmerSuchen.css">
+    <link rel="stylesheet" href="zimmerAnzeigen.css">
 </head>
 <body>
     <header id="menu-header">  
         <div><img src="../../Resources/White Trans Logo.png" id="logo"></div>     
         <nav id="menu">
             <ul>
-                <li><a href="zimmerSuchen.html">Zimmer</a></li>
+                <li><a href="../ZimmerSuchen/zimmerSuchen.html">Zimmer</a></li>
                 <li><a href="#">Restaurant</a></li>
                 <li><a href="#">Rezensionen</a></li>
             </ul>
@@ -21,31 +21,30 @@
             </a>
     </header>
 
-    <form action="../ZimmerAnzeigen/zimmerAnzeigen.html" id="screen">
-        <h1>Zimmer suchen</h1>
+    <form action="../Startseite/startseite.html" id="screen">
+        
+        <h1>Zimmer</h1>
+
+        <div id="zimmerPreview">
+            <img src="../../Resources/ZimmerImg.jpg" alt="" id="zimmerImg">
+        </div>
+
         <label for="">Kategorie:</label>
-        <select required>
-            <option>Standart</option>
-            <option>Premium</option>
-            <option>Luxus</option>
-        </select><br>
+        <input type="text"id="" readonly>
         <br>
         <label for="">Einzel-/Doppelzimmer:</label>
-        <select required>
-            <option>Einzelzimmer</option>
-            <option>Doppelzimmer</option>
-        </select><br>
+        <input type="text"id="" readonly><br>
 
         <label for="" id="vonBis">Von/ Bis:</label>
 
         <div>
-            <input type="date" id="vonTag" required>
-            <input type="date" id="bisTag" required>
+            <input type="date" id="vonTag" readonly>
+            <input type="date" id="bisTag" readonly>
         </div>
     
     <br>
 
-       <input type="submit" value="Zimmer Suchen" id="submit"><br>
+       <input type="submit" value="Zimmer Buchen" id="submit"><br>
     </form>
 </body>
 </html>
