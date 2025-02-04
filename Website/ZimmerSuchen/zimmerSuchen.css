@@ -108,3 +108,14 @@ select{
     height: auto;
     border: 1.6px solid #000000;
 }
+
+
+#vonTag{
+    flex: 1;
+    width: 45%;
+}
+
+#bisTag{
+    flex: 1;
+    width: 45%;
+}
