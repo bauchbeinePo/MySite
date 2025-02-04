@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="tischBuchen.css">
+</head>
+<body>
+    <header id="menu-header">  
+        <div><img src="../../Resources/White Trans Logo.png" id="logo"></div>     
+        <nav id="menu">
+            <ul>
+                <li><a href="../ZimmerSuchen/zimmerSuchen.html">Zimmer</a></li>
+                <li><a href="../TischBuchen/tischBuchen.html">Restaurant</a></li>
+                <li><a href="#">Rezensionen</a></li>
+            </ul>
+        </nav>
+            <a href="../Anmelden/anmelden.html">
+                <button id="signin">Anmelden</button>
+            </a>
+    </header>
+    
+    <img src="../../Resources/restaurant.jpg" alt="">
+
+    <form action="../Startseite/startseite.html" id="screen">
+        
+
+        <h1>Tisch Buchen</h1>
+
+        <label for="">Personen:</label>
+        <input type="number"id=""  min="1" max="6">
+        <br>
+       
+        <label for="" id="tag">Tag:</label>
+        <input type="date" id="tag"><br>
+        <label for="">Zeit:</label>
+        <input type="time" id="zeit"><br>
+       
+       <input type="submit" value="Tisch reservieren" id="submit"><br>
+
+       <a href="../Speisekarte/speisekarte.html">Speisekarte anzeigen</a>
+    </form>
+</body>
+</html>
