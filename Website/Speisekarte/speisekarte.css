@@ -42,15 +42,15 @@ body {
 }
 
 #menu ul li a:hover {
-    color: #f0a500;
+    color: #4fa7ff;
 }
-
 button{
     background-color: #0d86ff;
     color: white;
     font-size: 1.2em;
     border-radius: 4px;
     border-style: none;
+    padding: 8px;
 }
 
 button:hover{

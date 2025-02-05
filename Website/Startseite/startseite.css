@@ -1,6 +1,7 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
+    text-align: center;
 }
 
 #menu-header {
@@ -49,6 +50,7 @@ button{
     font-size: 1.2em;
     border-radius: 4px;
     border-style: none;
+    padding: 8px;
 }
 
 button:hover{
@@ -58,3 +60,64 @@ button:hover{
 button:active{
     background-color: #4fa7ff;
 }
+img{
+    width: 100%;
+    height: auto;
+}
+
+
+#rezension{
+    text-align: left;
+    font-size: 1.2em;
+    align-items: start;
+    justify-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    max-width: 50%;
+    margin-bottom: 5%;
+    border-radius: 25px;
+    background-color: rgb(249, 249, 249);
+    padding: 10px;
+    box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.139);
+}
+
+#rezension-erstellen{
+    background-color: #000000;
+    color: white;
+    font-size: 1.2em;
+    border-radius: 4px;
+    border-style: none;
+    padding: 10px;
+    position: absolute;
+    right: 30%;
+}
+
+#rezension-erstellen:hover{
+    background-color: #505050;
+}
+
+#rezension-erstellen:active{
+    background-color: #b6b6b6;
+}
+
+#header-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+#header-container h1 {
+    flex: 1;
+    text-align: center;
+}
+
+#rezension-erstellen:hover{
+    background-color: #505050;
+}
+
+#rezension-erstellen:active{
+    background-color: #b6b6b6;
+}
+
