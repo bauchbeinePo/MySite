@@ -73,6 +73,7 @@ button:active, #submit:active, a:active , a:active{
   
 }
 
+
 input{
     font-size: 1.2em;
     border-radius: 10px;
@@ -97,8 +98,8 @@ label{
 }
 
 a{
-    color: #0d86ff;
-    text-decoration: none;
+    color: rgb(62, 62, 62);
+    text-decoration: underline;    
 }
 
 
@@ -108,12 +109,6 @@ select{
     width: 300px;
     height: auto;
     border: 1.6px solid #000000;
-}
-
-a{
-
-    color: rgb(62, 62, 62);
-    text-decoration: underline;    
 }
 
 img{

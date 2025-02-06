@@ -84,13 +84,14 @@ img{
 
 #rezension-erstellen{
     background-color: #000000;
-    color: white;
-    font-size: 1.2em;
-    border-radius: 4px;
-    border-style: none;
-    padding: 10px;
-    position: absolute;
-    right: 30%;
+    margin-left: 80%;
+}
+
+#rezension-erstellen-link{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
 #rezension-erstellen:hover{
