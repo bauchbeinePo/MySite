@@ -43,7 +43,7 @@ body {
     color: #4fa7ff;
 }
 
-button{
+#signin{
     background-color: #0d86ff;
     color: white;
     font-size: 1.2em;
@@ -60,6 +60,18 @@ button:active, #submit:active, a:active , a:active{
     background-color: #4fa7ff;
 }
 
+
+#outerScreen{
+    margin-top: 2%;
+    text-align: center;
+    font-size: 1.2em;
+    align-items: center;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  
+}
 
 #screen{
     margin-top: -10%;
@@ -93,7 +105,7 @@ label{
     border-radius: 7px;
     margin-bottom: 10px;
     padding: 6px 25px;
-    max-width: 240px;
+    max-width: 260px;
 }
 
 a{
@@ -128,4 +140,27 @@ textarea{
     width: 300px;
     height: 200px;
     border: 1.6px solid #000000;
+}
+
+#stern{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: rgba(250, 235, 215, 0);
+    border-style: none;
+    margin: 8px;
+    font-size: 1.3em;
+    color: #0000002f;
+}
+
+#stern:hover{
+    font-size: 1.45em;
+    color: #000000;
+}
+
+#sterne{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
 }
