@@ -52,11 +52,11 @@ button{
     padding: 8px;
 }
 
-button:hover, #submit:hover, a:hover , a:hover{
+button:hover, #submit:hover{
     background-color: #085eb5;
 }
 
-button:active, #submit:active, a:active , a:active{
+button:active, #submit:active{
     background-color: #4fa7ff;
 }
 

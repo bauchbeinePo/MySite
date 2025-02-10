@@ -1,7 +1,6 @@
 body {
     margin: 0;
     font-family: Arial, sans-serif;
-    text-align: center;
 }
 
 #menu-header {
@@ -44,33 +43,41 @@ body {
     color: #4fa7ff;
 }
 
-button{
+#signin{
     background-color: #0d86ff;
     color: white;
     font-size: 1.2em;
     border-radius: 4px;
     border-style: none;
     padding: 8px;
-    margin: 7px;
 }
 
-button:hover, #submit:hover{
+button:hover, #submit:hover, a:hover , a:hover{
     background-color: #085eb5;
 }
 
-button:active, #submit:active{
+button:active, #submit:active, a:active , a:active{
     background-color: #4fa7ff;
 }
 
 
-#screen{
-    margin-top: -10%;
+#outerscreen, #screen{
     font-size: 1.2em;
     align-items: center;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-  
+}
+
+#outerScreen{
+    margin-top: 2%;
+    text-align: center;
+}
+
+#screen{
+    margin-top: -6%;
+    text-align: center;
 }
 
 input{
@@ -86,14 +93,48 @@ label{
     margin-bottom: 10px;
 }
 
-#submit{
+button{
     background-color: #0d86ff;
     color: white;
-    font-size: 1.1em;
+    font-size: 1em;
     border-radius: 7px;
     margin-bottom: 10px;
-    padding: 6px 25px;
-    max-width: 190px;
+    max-width: 260px;
+}
+
+#genehmigen{
+    background-color: rgb(21, 177, 21);
+    width: 50px;
+    height: 50px;
+    margin-right: 5px;
+}
+
+#ablehnen{
+    background-color: rgb(249, 68, 68);
+    width: 50px;
+    height: 50px;    
+    margin-left: 5px;
+}
+
+#genehmigen:hover{
+    background-color: rgb(16, 125, 16);
+}
+
+#ablehnen:hover{
+    background-color: rgb(189, 50, 50);
+}
+
+#genehmigen:active{
+    background-color: rgb(7, 59, 7);
+}
+
+#ablehnen:active{
+    background-color: rgb(146, 40, 40);
+}
+
+#buttons{
+    display: flex;
+    justify-content: right;
 }
 
 a{
@@ -119,4 +160,36 @@ select{
 #bisTag{
     flex: 1;
     width: 45%;
+}
+
+
+textarea{
+    font-size: 1.2em;
+    border-radius: 10px;
+    width: 300px;
+    height: 200px;
+    border: 1.6px solid #000000;
+}
+
+#stern{
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    background-color: rgba(250, 235, 215, 0);
+    border-style: none;
+    margin: 8px;
+    font-size: 1.3em;
+    color: #0000002f;
+}
+
+#stern:hover{
+    font-size: 1.45em;
+    color: #000000;
+}
+
+#sterne{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 10px;
+
 }
