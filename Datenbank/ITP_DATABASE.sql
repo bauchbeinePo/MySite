@@ -172,22 +172,23 @@ CREATE TABLE IF NOT EXISTS `kunde` (
   `Stammgast` tinyint(1) DEFAULT NULL,
   `Passwort` varchar(100) DEFAULT NULL,
   `Gast` tinyint(1) DEFAULT NULL,
+  `Anrede` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`KundeID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.kunde: ~11 rows (ungefähr)
-INSERT INTO `kunde` (`KundeID`, `Vorname`, `Nachname`, `Geschlecht`, `Geburtsdatum`, `Ort`, `Straße`, `PLZ`, `Hausnummer`, `Email`, `Stammgast`, `Passwort`, `Gast`) VALUES
-	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0),
-	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0),
-	(3, 'Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', 0, 'passwort789', 1),
-	(4, 'Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', 1, 'passwort101', 1),
-	(5, 'Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', 0, 'passwort202', 0),
-	(6, 'Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', 1, 'passwort303', 1),
-	(7, 'Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', 0, 'passwort404', 1),
-	(8, 'Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', 1, 'passwort505', 0),
-	(9, 'Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', 1, 'passwort606', 1),
-	(10, 'Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', 0, 'passwort707', 0),
-	(11, 'John', 'Doe', 'Männlich', '1990-01-01', 'Berlin', 'Hauptstraße', '10115', '1', 'john.doe@example.com', 1, 'passwort123', 0);
+-- Exportiere Daten aus Tabelle funrest.kunde: ~10 rows (ungefähr)
+INSERT INTO `kunde` (`KundeID`, `Vorname`, `Nachname`, `Geschlecht`, `Geburtsdatum`, `Ort`, `Straße`, `PLZ`, `Hausnummer`, `Email`, `Stammgast`, `Passwort`, `Gast`, `Anrede`) VALUES
+	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0, NULL),
+	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0, NULL),
+	(3, 'Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', 0, 'passwort789', 1, NULL),
+	(4, 'Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', 1, 'passwort101', 1, NULL),
+	(5, 'Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', 0, 'passwort202', 0, NULL),
+	(6, 'Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', 1, 'passwort303', 1, NULL),
+	(7, 'Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', 0, 'passwort404', 1, NULL),
+	(8, 'Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', 1, 'passwort505', 0, NULL),
+	(9, 'Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', 1, 'passwort606', 1, NULL),
+	(10, 'Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', 0, 'passwort707', 0, NULL),
+	(11, 'John', 'Doe', 'Männlich', '1990-01-01', 'Berlin', 'Hauptstraße', '10115', '1', 'john.doe@example.com', 1, 'passwort123', 0, NULL);
 
 -- Exportiere Struktur von Tabelle funrest.mitarbeiter
 CREATE TABLE IF NOT EXISTS `mitarbeiter` (
@@ -766,7 +767,8 @@ CREATE TABLE IF NOT EXISTS Kunde (
     Email VARCHAR(100),
     Stammgast BOOL,
     Passwort VARCHAR(100),
-    Gast BOOL
+    Gast BOOL,
+    Anrede VARCHAR(50)
     
 );
 
@@ -925,18 +927,18 @@ DELIMITER //
 CREATE PROCEDURE `data_Kunde`()
     COMMENT 'Testdaten für die Kunden Tabelle'
 BEGIN
-INSERT INTO Kunde (Vorname, Nachname, Geschlecht, Geburtsdatum, Ort, Straße, PLZ, Hausnummer, Email, Stammgast, Passwort, Gast)
+INSERT INTO Kunde (Vorname, Nachname, Geschlecht, Geburtsdatum, Ort, Straße, PLZ, Hausnummer, Email, Stammgast, Passwort, Gast, Anrede)
 VALUES
-('Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', TRUE, 'passwort123', FALSE),
-('Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', TRUE, 'passwort456', FALSE),
-('Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', FALSE, 'passwort789', TRUE),
-('Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', TRUE, 'passwort101', TRUE),
-('Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', FALSE, 'passwort202', FALSE),
-('Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', TRUE, 'passwort303', TRUE),
-('Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', FALSE, 'passwort404', TRUE),
-('Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', TRUE, 'passwort505', FALSE),
-('Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', TRUE, 'passwort606', TRUE),
-('Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', FALSE, 'passwort707', FALSE);
+('Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', TRUE, 'passwort123', FALSE, 'Herr'),
+('Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', TRUE, 'passwort456', FALSE, 'Herr'),
+('Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', FALSE, 'passwort789', TRUE, 'Herr'),
+('Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', TRUE, 'passwort101', TRUE, 'Keine Angabe'),
+('Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', FALSE, 'passwort202', FALSE, 'Herr'),
+('Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', TRUE, 'passwort303', TRUE, 'Frau'),
+('Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', FALSE, 'passwort404', TRUE, 'Herr'),
+('Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', TRUE, 'passwort505', FALSE, 'Herr'),
+('Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', TRUE, 'passwort606', TRUE, 'Herr'),
+('Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', FALSE, 'passwort707', FALSE, 'Frau');
 
 END//
 DELIMITER ;
@@ -1482,9 +1484,9 @@ CREATE PROCEDURE `new_Kunde`(
 	IN `p_PLZ` VARCHAR(50),
 	IN `p_Hausnummer` VARCHAR(50),
 	IN `p_Email` VARCHAR(100),
-	IN `p_Stammgast` BOOL,
 	IN `p_Passwort` VARCHAR(100),
-	IN `p_Gast` BOOL
+	IN `p_Gast` BOOL,
+	IN `p_Anrede` INT
 )
     COMMENT 'Erstellet einen Kunden anhand der Übergabeparameter'
 BEGIN
@@ -1500,7 +1502,8 @@ BEGIN
         Email,
         Stammgast,
         Passwort,
-        Gast
+        Gast,
+        Anrede
     ) VALUES (
         p_Vorname,
         p_Nachname,
@@ -1511,9 +1514,10 @@ BEGIN
         p_PLZ,
         p_Hausnummer,
         p_Email,
-        p_Stammgast,
+        false,
         p_Passwort,
-        p_Gast
+        p_Gast,
+        p_Anrede
     );
 END//
 DELIMITER ;
