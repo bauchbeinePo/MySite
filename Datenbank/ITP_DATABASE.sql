@@ -175,7 +175,7 @@ CREATE TABLE IF NOT EXISTS `kunde` (
   PRIMARY KEY (`KundeID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.kunde: ~10 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.kunde: ~11 rows (ungefähr)
 INSERT INTO `kunde` (`KundeID`, `Vorname`, `Nachname`, `Geschlecht`, `Geburtsdatum`, `Ort`, `Straße`, `PLZ`, `Hausnummer`, `Email`, `Stammgast`, `Passwort`, `Gast`) VALUES
 	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0),
 	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0),
@@ -1359,7 +1359,7 @@ BEGIN
 	
     DECLARE Mitarbeiter_Tag INT;
     DECLARE Freies_Zimmer_ID INT;
-    DECLARE LastID INT;
+
 
     
     SELECT MitarbeiterID INTO Mitarbeiter_Tag
@@ -1381,24 +1381,12 @@ BEGIN
 	 LIMIT 1;
 	
 	
-	SELECT z.ZimmerID
-	FROM zimmer AS z
-	WHERE z.Kategorie = p_Kategorie
-	AND z.Zimmerart = p_Zimmerart
-	AND z.ZimmerID NOT IN (   
-    SELECT bz.ZimmerID
-    FROM zimmer AS z
-    inner JOIN Buchungen_Zimmer AS bz  ON bz.ZimmerID = z.ZimmerID
-    WHERE p_Anreise <= bz.Abreise AND p_Abreise >= bz.Anreise
-    AND z.Zimmerart = p_Zimmerart
-    AND z.Kategorie = p_Kategorie);
 
    IF Freies_Zimmer_ID IS NOT null THEN
-   	SELECT TRUE AS Buchung; 
-
-    CALL new_Rechnungen(p_KundeID, Mitarbeiter_Tag, LastID);
-   
-	 CALL new_Buchungen_Zimmer(Freies_Zimmer_ID, p_KundeID, Mitarbeiter_Tag, LastID, p_Anreise, p_Abreise, FALSE, FALSE);
+   	 
+	SELECT Freies_Zimmer_ID AS p_ZimmerID, p_KundeID AS p_KundeID,  Mitarbeiter_Tag AS p_MitarbeiterID, p_Anreise AS p_Anreise, p_Abreise AS p_Abreise;
+	
+	 
     ELSE
    	SELECT FALSE AS Buchung;
     END IF;
@@ -1548,6 +1536,26 @@ BEGIN
     );
     
      SET p_LastID = LAST_INSERT_ID();
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.set_Buchung_Zimmer
+DELIMITER //
+CREATE PROCEDURE `set_Buchung_Zimmer`(
+	IN `p_Anreise` DATE,
+	IN `p_Abreise` DATE,
+	IN `p_KundeID` INT,
+	IN `p_ZimmerID` INT,
+	IN `p_MitarbeiterID` INT
+)
+BEGIN
+   DECLARE LastID INT;
+    
+CALL new_Rechnungen(p_KundeID, p_MitarbeiterID, LastID);
+   
+CALL new_Buchungen_Zimmer(p_ZimmerID, p_KundeID, p_MitarbeiterID, LastID, p_Anreise, p_Abreise, FALSE, FALSE);
+	 
+	
 END//
 DELIMITER ;
 
