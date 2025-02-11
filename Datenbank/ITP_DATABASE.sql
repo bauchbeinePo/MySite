@@ -176,7 +176,7 @@ CREATE TABLE IF NOT EXISTS `kunde` (
   PRIMARY KEY (`KundeID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.kunde: ~10 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.kunde: ~11 rows (ungefähr)
 INSERT INTO `kunde` (`KundeID`, `Vorname`, `Nachname`, `Geschlecht`, `Geburtsdatum`, `Ort`, `Straße`, `PLZ`, `Hausnummer`, `Email`, `Stammgast`, `Passwort`, `Gast`, `Anrede`) VALUES
 	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0, NULL),
 	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0, NULL),
@@ -1403,9 +1403,27 @@ DELIMITER //
 CREATE PROCEDURE `get_Passwort`(
 	IN `p_Email` VARCHAR(100)
 )
-    COMMENT 'Bekommt die email des Kunden und gibt das Passwort zurück'
+    COMMENT 'Bekommt die email des Kunden und gibt das Passwort zurück '
 BEGIN
-    SELECT Passwort FROM Kunde WHERE Email = p_Email;
+
+    DECLARE selection VARCHAR(50);
+    DECLARE adminStatus BOOL;
+
+
+    SELECT Passwort INTO selection
+    FROM Kunde
+    WHERE Email = p_Email;
+
+
+    IF selection IS NULL THEN
+        SELECT Passwort, IstAdmin INTO selection, adminStatus
+        FROM Mitarbeiter
+        WHERE Email = p_Email;
+    END IF;
+
+
+    SELECT selection, adminStatus;
+	 
 END//
 DELIMITER ;
 
