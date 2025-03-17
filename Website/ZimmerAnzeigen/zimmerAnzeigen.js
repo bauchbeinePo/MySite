@@ -1,4 +1,10 @@
-document.getElementById('vonTag').value = localStorage.getItem('vonDate');
-document.getElementById('bisTag').value = localStorage.getItem('bisDate');
-document.getElementById('zimmerTyp').value = localStorage.getItem('zimmerTyp');
-document.getElementById('zimmerArt').value = localStorage.getItem('zimmerArt');
+
+const vonDate = localStorage.getItem('vonDate');
+const bisDate = localStorage.getItem('bisDate');
+const zimmerTyp = localStorage.getItem('zimmerTyp');
+const zimmerArt = localStorage.getItem('zimmerArt');
+
+document.getElementById('vonTag').value = vonDate;
+document.getElementById('bisTag').value = bisDate;
+document.getElementById('zimmerTyp').value = "Geld";
+document.getElementById('zimmerArt').value = zimmerArt;
