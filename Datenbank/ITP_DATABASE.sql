@@ -34,50 +34,9 @@ CREATE TABLE IF NOT EXISTS `buchungen_tisch` (
   CONSTRAINT `buchungen_tisch_ibfk_1` FOREIGN KEY (`TischID`) REFERENCES `restaurant_tische` (`TischID`),
   CONSTRAINT `buchungen_tisch_ibfk_2` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `buchungen_tisch_ibfk_3` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.buchungen_tisch: ~40 rows (ungefähr)
-INSERT INTO `buchungen_tisch` (`Buchungen_TischID`, `TischID`, `KundeID`, `MitarbeiterID`, `Zeitpunkt`, `Stoniert`) VALUES
-	(1, 4, 1, 6, '2025-02-15 18:00:00', 0),
-	(2, 8, 1, 6, '2025-02-15 18:00:00', 0),
-	(3, 14, 1, 6, '2025-02-15 18:00:00', 0),
-	(4, 18, 1, 6, '2025-02-15 18:00:00', 0),
-	(5, 24, 1, 6, '2025-02-15 18:00:00', 0),
-	(6, 28, 1, 6, '2025-02-15 18:00:00', 0),
-	(7, 29, 1, 6, '2025-02-15 18:00:00', 0),
-	(8, 34, 1, 6, '2025-02-15 18:00:00', 0),
-	(9, 38, 1, 6, '2025-02-15 18:00:00', 0),
-	(10, 39, 1, 6, '2025-02-15 18:00:00', 0),
-	(11, 4, 1, 6, '2025-02-15 22:00:00', 0),
-	(12, 8, 1, 6, '2025-02-15 22:00:00', 0),
-	(13, 14, 1, 6, '2025-02-15 22:00:00', 0),
-	(14, 18, 1, 6, '2025-02-15 22:00:00', 0),
-	(15, 24, 1, 6, '2025-02-15 22:00:00', 0),
-	(16, 28, 1, 6, '2025-02-15 22:00:00', 0),
-	(17, 29, 1, 6, '2025-02-15 22:00:00', 0),
-	(18, 34, 1, 6, '2025-02-15 22:00:00', 0),
-	(19, 38, 1, 6, '2025-02-15 22:00:00', 0),
-	(20, 39, 1, 6, '2025-02-15 22:00:00', 0),
-	(21, 4, 1, 6, '2025-03-15 23:00:00', 0),
-	(22, 8, 1, 6, '2025-03-15 23:00:00', 0),
-	(23, 14, 1, 6, '2025-03-15 23:00:00', 0),
-	(24, 18, 1, 6, '2025-03-15 23:00:00', 0),
-	(25, 24, 1, 6, '2025-03-15 23:00:00', 0),
-	(26, 28, 1, 6, '2025-03-15 23:00:00', 0),
-	(27, 29, 1, 6, '2025-03-15 23:00:00', 0),
-	(28, 34, 1, 6, '2025-03-15 23:00:00', 0),
-	(29, 38, 1, 6, '2025-03-15 23:00:00', 0),
-	(30, 39, 1, 6, '2025-03-15 23:00:00', 0),
-	(31, 4, 1, 5, '2024-03-15 23:00:00', 0),
-	(32, 8, 1, 5, '2024-03-15 23:00:00', 0),
-	(33, 14, 1, 5, '2024-03-15 23:00:00', 0),
-	(34, 18, 1, 5, '2024-03-15 23:00:00', 0),
-	(35, 24, 1, 5, '2024-03-15 23:00:00', 0),
-	(36, 28, 1, 5, '2024-03-15 23:00:00', 0),
-	(37, 29, 1, 5, '2024-03-15 23:00:00', 0),
-	(38, 34, 1, 5, '2024-03-15 23:00:00', 0),
-	(39, 38, 1, 5, '2024-03-15 23:00:00', 0),
-	(40, 39, 1, 5, '2024-03-15 23:00:00', 0);
+-- Exportiere Daten aus Tabelle funrest.buchungen_tisch: ~0 rows (ungefähr)
 
 -- Exportiere Struktur von Tabelle funrest.buchungen_zimmer
 CREATE TABLE IF NOT EXISTS `buchungen_zimmer` (
@@ -86,8 +45,8 @@ CREATE TABLE IF NOT EXISTS `buchungen_zimmer` (
   `KundeID` int(11) DEFAULT NULL,
   `MitarbeiterID` int(11) DEFAULT NULL,
   `RechnungID` int(11) DEFAULT NULL,
-  `Anreise` date DEFAULT NULL,
-  `Abreise` date DEFAULT NULL,
+  `Anreise` datetime DEFAULT NULL,
+  `Abreise` datetime DEFAULT NULL,
   `Storniert` tinyint(1) DEFAULT NULL,
   `Gezahlt` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Buchungen_ZimmerID`),
@@ -99,63 +58,9 @@ CREATE TABLE IF NOT EXISTS `buchungen_zimmer` (
   CONSTRAINT `buchungen_zimmer_ibfk_2` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `buchungen_zimmer_ibfk_3` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`),
   CONSTRAINT `buchungen_zimmer_ibfk_4` FOREIGN KEY (`RechnungID`) REFERENCES `rechnungen` (`RechnungID`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.buchungen_zimmer: ~53 rows (ungefähr)
-INSERT INTO `buchungen_zimmer` (`Buchungen_ZimmerID`, `ZimmerID`, `KundeID`, `MitarbeiterID`, `RechnungID`, `Anreise`, `Abreise`, `Storniert`, `Gezahlt`) VALUES
-	(2, 1, 1, NULL, NULL, '2025-03-01', '2025-03-10', 0, 0),
-	(3, 7, 1, 13, NULL, '2025-03-01', '2025-03-10', 0, 0),
-	(4, 13, 1, 13, 4, '2025-03-01', '2025-03-10', 0, 0),
-	(5, 19, 1, 13, 5, '2025-03-01', '2025-03-10', 0, 0),
-	(6, 25, 1, 13, 6, '2025-03-01', '2025-03-10', 0, 0),
-	(7, 31, 1, 13, 7, '2025-03-01', '2025-03-10', 0, 0),
-	(8, 37, 1, 13, 8, '2025-03-01', '2025-03-10', 0, 0),
-	(9, 43, 1, 13, 9, '2025-03-01', '2025-03-10', 0, 0),
-	(10, 49, 1, 13, 10, '2025-03-01', '2025-03-10', 0, 0),
-	(11, 55, 1, 13, 11, '2025-03-01', '2025-03-10', 0, 0),
-	(12, 61, 1, 13, 12, '2025-03-01', '2025-03-10', 0, 0),
-	(13, 67, 1, 13, 13, '2025-03-01', '2025-03-10', 0, 0),
-	(14, 73, 1, 13, 14, '2025-03-01', '2025-03-10', 0, 0),
-	(15, 79, 1, 13, 15, '2025-03-01', '2025-03-10', 0, 0),
-	(16, 85, 1, 13, 16, '2025-03-01', '2025-03-10', 0, 0),
-	(17, 91, 1, 13, 17, '2025-03-01', '2025-03-10', 0, 0),
-	(18, 97, 1, 13, 18, '2025-03-01', '2025-03-10', 0, 0),
-	(19, 103, 1, 13, 19, '2025-03-01', '2025-03-10', 0, 0),
-	(20, 109, 1, 13, 20, '2025-03-01', '2025-03-10', 0, 0),
-	(21, 115, 1, 13, 21, '2025-03-01', '2025-03-10', 0, 0),
-	(22, 121, 1, 13, 22, '2025-03-01', '2025-03-10', 0, 0),
-	(23, 127, 1, 13, 23, '2025-03-01', '2025-03-10', 0, 0),
-	(24, 133, 1, 13, 24, '2025-03-01', '2025-03-10', 0, 0),
-	(25, 139, 1, 13, 25, '2025-03-01', '2025-03-10', 0, 0),
-	(26, 145, 1, 13, 26, '2025-03-01', '2025-03-10', 0, 0),
-	(27, 151, 1, 13, 27, '2025-03-01', '2025-03-10', 0, 0),
-	(28, 157, 1, 13, 28, '2025-03-01', '2025-03-10', 0, 0),
-	(29, 163, 1, 13, 29, '2025-03-01', '2025-03-10', 0, 0),
-	(30, 169, 1, 13, 30, '2025-03-01', '2025-03-10', 0, 0),
-	(31, 175, 1, 13, 31, '2025-03-01', '2025-03-10', 0, 0),
-	(32, 181, 1, 13, 32, '2025-03-01', '2025-03-10', 0, 0),
-	(33, 187, 1, 13, 33, '2025-03-01', '2025-03-10', 0, 0),
-	(34, 193, 1, 13, 34, '2025-03-01', '2025-03-10', 0, 0),
-	(35, 199, 1, 13, 35, '2025-03-01', '2025-03-10', 0, 0),
-	(36, 205, 1, 13, 36, '2025-03-01', '2025-03-10', 0, 0),
-	(37, 211, 1, 13, 37, '2025-03-01', '2025-03-10', 0, 0),
-	(38, 217, 1, 13, 38, '2025-03-01', '2025-03-10', 0, 0),
-	(39, 223, 1, 13, 39, '2025-03-01', '2025-03-10', 0, 0),
-	(40, 229, 1, 13, 40, '2025-03-01', '2025-03-10', 0, 0),
-	(41, 235, 1, 13, 41, '2025-03-01', '2025-03-10', 0, 0),
-	(42, 241, 1, 13, 42, '2025-03-01', '2025-03-10', 0, 0),
-	(43, 247, 1, 13, 43, '2025-03-01', '2025-03-10', 0, 0),
-	(44, 253, 1, 13, 44, '2025-03-01', '2025-03-10', 0, 0),
-	(45, 259, 1, 13, 45, '2025-03-01', '2025-03-10', 0, 0),
-	(46, 265, 1, 13, 46, '2025-03-01', '2025-03-10', 0, 0),
-	(47, 271, 1, 13, 47, '2025-03-01', '2025-03-10', 0, 0),
-	(48, 277, 1, 13, 48, '2025-03-01', '2025-03-10', 0, 0),
-	(49, 283, 1, 13, 49, '2025-03-01', '2025-03-10', 0, 0),
-	(50, 4, 1, 14, 50, '2025-02-02', '2025-03-07', 0, 0),
-	(51, 6, 1, 14, 51, '2025-02-02', '2025-03-07', 0, 0),
-	(52, 3, 1, 14, 52, '2025-02-02', '2025-03-07', 0, 0),
-	(53, 9, 1, 14, 53, '2025-02-02', '2025-03-07', 0, 0),
-	(54, 15, 1, 14, 54, '2025-02-02', '2025-03-07', 0, 0);
+-- Exportiere Daten aus Tabelle funrest.buchungen_zimmer: ~0 rows (ungefähr)
 
 -- Exportiere Struktur von Tabelle funrest.kunde
 CREATE TABLE IF NOT EXISTS `kunde` (
@@ -174,21 +79,20 @@ CREATE TABLE IF NOT EXISTS `kunde` (
   `Gast` tinyint(1) DEFAULT NULL,
   `Anrede` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`KundeID`)
-) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Exportiere Daten aus Tabelle funrest.kunde: ~10 rows (ungefähr)
 INSERT INTO `kunde` (`KundeID`, `Vorname`, `Nachname`, `Geschlecht`, `Geburtsdatum`, `Ort`, `Straße`, `PLZ`, `Hausnummer`, `Email`, `Stammgast`, `Passwort`, `Gast`, `Anrede`) VALUES
-	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0, NULL),
-	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0, NULL),
-	(3, 'Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', 0, 'passwort789', 1, NULL),
-	(4, 'Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', 1, 'passwort101', 1, NULL),
-	(5, 'Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', 0, 'passwort202', 0, NULL),
-	(6, 'Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', 1, 'passwort303', 1, NULL),
-	(7, 'Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', 0, 'passwort404', 1, NULL),
-	(8, 'Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', 1, 'passwort505', 0, NULL),
-	(9, 'Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', 1, 'passwort606', 1, NULL),
-	(10, 'Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', 0, 'passwort707', 0, NULL),
-	(11, 'John', 'Doe', 'Männlich', '1990-01-01', 'Berlin', 'Hauptstraße', '10115', '1', 'john.doe@example.com', 1, 'passwort123', 0, NULL);
+	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0, 'Herr'),
+	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0, 'Herr'),
+	(3, 'Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', 0, 'passwort789', 1, 'Herr'),
+	(4, 'Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', 1, 'passwort101', 1, 'Keine Angabe'),
+	(5, 'Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', 0, 'passwort202', 0, 'Herr'),
+	(6, 'Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', 1, 'passwort303', 1, 'Frau'),
+	(7, 'Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', 0, 'passwort404', 1, 'Herr'),
+	(8, 'Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', 1, 'passwort505', 0, 'Herr'),
+	(9, 'Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', 1, 'passwort606', 1, 'Herr'),
+	(10, 'Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', 0, 'passwort707', 0, 'Frau');
 
 -- Exportiere Struktur von Tabelle funrest.mitarbeiter
 CREATE TABLE IF NOT EXISTS `mitarbeiter` (
@@ -231,68 +135,9 @@ CREATE TABLE IF NOT EXISTS `rechnungen` (
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rechnungen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rechnungen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rechnungen: ~53 rows (ungefähr)
-INSERT INTO `rechnungen` (`RechnungID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`) VALUES
-	(1, 1, NULL, NULL),
-	(2, 1, 13, NULL),
-	(3, 1, 1, NULL),
-	(4, 1, 13, NULL),
-	(5, 1, 13, NULL),
-	(6, 1, 13, NULL),
-	(7, 1, 13, NULL),
-	(8, 1, 13, NULL),
-	(9, 1, 13, NULL),
-	(10, 1, 13, NULL),
-	(11, 1, 13, NULL),
-	(12, 1, 13, NULL),
-	(13, 1, 13, NULL),
-	(14, 1, 13, NULL),
-	(15, 1, 13, NULL),
-	(16, 1, 13, NULL),
-	(17, 1, 13, NULL),
-	(18, 1, 13, NULL),
-	(19, 1, 13, NULL),
-	(20, 1, 13, NULL),
-	(21, 1, 13, NULL),
-	(22, 1, 13, NULL),
-	(23, 1, 13, NULL),
-	(24, 1, 13, NULL),
-	(25, 1, 13, NULL),
-	(26, 1, 13, NULL),
-	(27, 1, 13, NULL),
-	(28, 1, 13, NULL),
-	(29, 1, 13, NULL),
-	(30, 1, 13, NULL),
-	(31, 1, 13, NULL),
-	(32, 1, 13, NULL),
-	(33, 1, 13, NULL),
-	(34, 1, 13, NULL),
-	(35, 1, 13, NULL),
-	(36, 1, 13, NULL),
-	(37, 1, 13, NULL),
-	(38, 1, 13, NULL),
-	(39, 1, 13, NULL),
-	(40, 1, 13, NULL),
-	(41, 1, 13, NULL),
-	(42, 1, 13, NULL),
-	(43, 1, 13, NULL),
-	(44, 1, 13, NULL),
-	(45, 1, 13, NULL),
-	(46, 1, 13, NULL),
-	(47, 1, 13, NULL),
-	(48, 1, 13, NULL),
-	(49, 1, 13, NULL),
-	(50, 1, 14, NULL),
-	(51, 1, 14, NULL),
-	(52, 1, 14, NULL),
-	(53, 1, 14, NULL),
-	(54, 1, 14, NULL),
-	(55, 1, 2, '2025-02-11'),
-	(56, 1, 3, '2025-02-11'),
-	(57, 2, 2, '2025-02-11'),
-	(58, 2, 3, '2025-02-11');
+-- Exportiere Daten aus Tabelle funrest.rechnungen: ~0 rows (ungefähr)
 
 -- Exportiere Struktur von Tabelle funrest.restaurant_tische
 CREATE TABLE IF NOT EXISTS `restaurant_tische` (
@@ -359,15 +204,20 @@ CREATE TABLE IF NOT EXISTS `rezensionen` (
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rezensionen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rezensionen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rezensionen: ~5 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.rezensionen: ~10 rows (ungefähr)
 INSERT INTO `rezensionen` (`RezensionenID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`, `Anzahl_Sterne`, `Titel`, `Inhalt`, `Genehmigt`) VALUES
-	(1, 1, 2, '2025-02-11', 5, 'Großartiges Erlebnis', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel.', 1),
-	(2, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. NICHT!!!!', 1),
-	(3, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. NICHT!!!!', 0),
-	(4, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. NICHT!!!!', 0),
-	(5, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. doch!!!!', 1);
+	(1, 1, 1, '2025-01-12', 5, 'Exzellenter Aufenthalt', 'Ich war äußerst zufrieden mit dem Service. Das Personal war freundlich und zuvorkommend. Die Zimmer waren sauber und komfortabel.', 1),
+	(2, 2, NULL, '2025-02-05', 3, 'Gut, aber mit Mängeln', 'Der Aufenthalt war insgesamt gut, jedoch war das Badezimmer nicht ganz sauber und die Wartezeit beim Check-in war lang.', 0),
+	(3, 3, 1, '2025-03-10', 4, 'Sehr guter Service', 'Das Personal war überaus hilfsbereit, und das Frühstück war köstlich. Kleine Probleme mit dem WLAN.', 1),
+	(4, 4, NULL, '2025-01-25', 2, 'Enttäuscht vom Aufenthalt', 'Leider entsprach der Aufenthalt nicht meinen Erwartungen. Das Zimmer war kalt, und die Heizung funktionierte nicht.', 0),
+	(5, 5, 1, '2025-03-15', 5, 'Absolut fantastisch!', 'Alles war perfekt! Das Personal ging auf alle unsere Wünsche ein, und das Essen war unglaublich.', 1),
+	(6, 6, NULL, '2025-02-28', 1, 'Sehr schlechter Aufenthalt', 'Unfreundliches Personal, schmutzige Zimmer und laute Nachbarn. Definitiv nicht zu empfehlen.', 0),
+	(7, 7, 1, '2025-01-30', 4, 'Guter Aufenthalt', 'Ich habe meinen Aufenthalt genossen. Der Poolbereich war fantastisch, aber das Essen könnte besser sein.', 1),
+	(8, 8, NULL, '2025-02-18', 3, 'In Ordnung, mit Verbesserungspotenzial', 'Das Zimmer war sauber, aber der Service könnte aufmerksamer sein. Das Frühstück war mittelmäßig.', 0),
+	(9, 9, 1, '2025-03-05', 5, 'Einfach großartig!', 'Alles verlief reibungslos. Vom Check-in bis zum Check-out ein wunderbares Erlebnis. Gerne wieder!', 1),
+	(10, 10, NULL, '2025-01-18', 2, 'Nicht zufriedenstellend', 'Die Sauberkeit ließ zu wünschen übrig, und das Personal war unaufmerksam. Verbesserungen sind dringend nötig.', 0);
 
 -- Exportiere Struktur von Tabelle funrest.zimmer
 CREATE TABLE IF NOT EXISTS `zimmer` (
@@ -375,7 +225,9 @@ CREATE TABLE IF NOT EXISTS `zimmer` (
   `Kategorie` varchar(50) DEFAULT NULL,
   `Zimmerart` varchar(50) DEFAULT NULL,
   `Preiskategorie` int(11) DEFAULT NULL,
-  PRIMARY KEY (`ZimmerID`)
+  PRIMARY KEY (`ZimmerID`),
+  KEY `Preiskategorie` (`Preiskategorie`),
+  CONSTRAINT `zimmer_ibfk_1` FOREIGN KEY (`Preiskategorie`) REFERENCES `zimmer_preis` (`PreisID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=289 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Exportiere Daten aus Tabelle funrest.zimmer: ~288 rows (ungefähr)
@@ -696,9 +548,10 @@ CALL create_Rechnungen();
 CALL create_Rezensionen();
 CALL create_Restaurant_Tische();
 CALL create_Buchungen_Tisch();
+CALL create_Zimmer_Preis();
 CALL create_Zimmer();
 CALL create_Buchungen_Zimmer();
-CALL create_Zimmer_Preis();
+
 END//
 DELIMITER ;
 
@@ -894,7 +747,8 @@ CREATE TABLE IF NOT EXISTS Zimmer (
     ZimmerID INT AUTO_INCREMENT PRIMARY KEY,
     Kategorie VARCHAR(50),
 	 Zimmerart VARCHAR(50),
-	 Preiskategorie INT
+	 Preiskategorie INT,
+	 FOREIGN KEY (Preiskategorie) REFERENCES zimmer_preis(PreisID)
 	 );
 
 
@@ -931,7 +785,7 @@ CALL data_Mitarbeiter();
 CALL data_Zimmer_Preis();
 CALL data_Restaurant_Tische();
 CALL data_Zimmer();
-
+CALL data_Rezensionen();
 
 END//
 DELIMITER ;
@@ -993,6 +847,25 @@ INSERT INTO Restaurant_Tische (Anzahl_Plätze) VALUES
 (1), (2), (3), (4), (5), (6), (2), (4), (2), (6),
 (1), (2), (3), (4), (5), (6), (2), (4), (4), (6),
 (1), (2), (3), (4), (5), (6), (2), (4), (4), (6);
+
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.data_Rezensionen
+DELIMITER //
+CREATE PROCEDURE `data_Rezensionen`()
+BEGIN
+INSERT INTO rezensionen (KundeID, MitarbeiterID, Erstelldatum, Anzahl_Sterne, Titel, Inhalt, Genehmigt) VALUES
+(1, 1, '2025-01-12', 5, 'Exzellenter Aufenthalt', 'Ich war äußerst zufrieden mit dem Service. Das Personal war freundlich und zuvorkommend. Die Zimmer waren sauber und komfortabel.', TRUE),
+(2, null, '2025-02-05', 3, 'Gut, aber mit Mängeln', 'Der Aufenthalt war insgesamt gut, jedoch war das Badezimmer nicht ganz sauber und die Wartezeit beim Check-in war lang.', FALSE),
+(3, 1, '2025-03-10', 4, 'Sehr guter Service', 'Das Personal war überaus hilfsbereit, und das Frühstück war köstlich. Kleine Probleme mit dem WLAN.', TRUE),
+(4, null, '2025-01-25', 2, 'Enttäuscht vom Aufenthalt', 'Leider entsprach der Aufenthalt nicht meinen Erwartungen. Das Zimmer war kalt, und die Heizung funktionierte nicht.', FALSE),
+(5, 1, '2025-03-15', 5, 'Absolut fantastisch!', 'Alles war perfekt! Das Personal ging auf alle unsere Wünsche ein, und das Essen war unglaublich.', TRUE),
+(6, null, '2025-02-28', 1, 'Sehr schlechter Aufenthalt', 'Unfreundliches Personal, schmutzige Zimmer und laute Nachbarn. Definitiv nicht zu empfehlen.', FALSE),
+(7, 1, '2025-01-30', 4, 'Guter Aufenthalt', 'Ich habe meinen Aufenthalt genossen. Der Poolbereich war fantastisch, aber das Essen könnte besser sein.', TRUE),
+(8, null, '2025-02-18', 3, 'In Ordnung, mit Verbesserungspotenzial', 'Das Zimmer war sauber, aber der Service könnte aufmerksamer sein. Das Frühstück war mittelmäßig.', FALSE),
+(9, 1, '2025-03-05', 5, 'Einfach großartig!', 'Alles verlief reibungslos. Vom Check-in bis zum Check-out ein wunderbares Erlebnis. Gerne wieder!', TRUE),
+(10, null, '2025-01-18', 2, 'Nicht zufriedenstellend', 'Die Sauberkeit ließ zu wünschen übrig, und das Personal war unaufmerksam. Verbesserungen sind dringend nötig.', FALSE);
 
 END//
 DELIMITER ;
@@ -1366,21 +1239,16 @@ DELIMITER //
 CREATE PROCEDURE `get_free_Zimmer`(
 	IN `p_Anreise` DATE,
 	IN `p_Abreise` DATE,
-	IN `p_KundeID` INT,
 	IN `p_Kategorie` VARCHAR(50),
 	IN `p_Zimmerart` VARCHAR(50)
 )
 BEGIN
 	
 	
-    DECLARE Mitarbeiter_Tag INT;
+
     DECLARE Freies_Zimmer_ID INT;
 
 
-    
-    SELECT MitarbeiterID INTO Mitarbeiter_Tag
-	 FROM mitarbeiter AS m
-	 WHERE m.Buchungen_Dienst = DAYOFWEEK(p_Anreise);  -- prüft welcher Mitarbeiter an diesem Tag schicht hat und weißt ihm das Recht zu
 
 
 	SELECT z.ZimmerID INTO Freies_Zimmer_ID
@@ -1400,7 +1268,7 @@ BEGIN
 
    IF Freies_Zimmer_ID IS NOT null THEN
    	 
-	SELECT Freies_Zimmer_ID AS p_ZimmerID, p_KundeID AS p_KundeID,  Mitarbeiter_Tag AS p_MitarbeiterID, p_Anreise AS p_Anreise, p_Abreise AS p_Abreise;
+	SELECT Freies_Zimmer_ID AS p_ZimmerID,p_Anreise AS p_Anreise, p_Abreise AS p_Abreise;
 	
 	 
     ELSE
@@ -1473,7 +1341,8 @@ BEGIN
    SELECT *
     FROM rezensionen AS r
     WHERE r.Genehmigt = FALSE 
-    ORDER BY Erstelldatum DESC;
+    ORDER BY Erstelldatum DESC
+	 LIMIT 1;
     
 END//
 DELIMITER ;
@@ -1675,10 +1544,16 @@ CREATE PROCEDURE `set_Buchung_Zimmer`(
 )
 BEGIN
    DECLARE LastID INT;
+ 	DECLARE Mitarbeiter_Tag INT;
+ 	
+    SELECT MitarbeiterID INTO Mitarbeiter_Tag
+	 FROM mitarbeiter AS m
+	 WHERE m.Buchungen_Dienst = DAYOFWEEK(p_Anreise);  -- prüft welcher Mitarbeiter an diesem Tag schicht hat und weißt ihm das Recht zu
+
     
-CALL new_Rechnungen(p_KundeID, p_MitarbeiterID, LastID);
+CALL new_Rechnungen(p_KundeID, Mitarbeiter_Tag, LastID);
    
-CALL new_Buchungen_Zimmer(p_ZimmerID, p_KundeID, p_MitarbeiterID, LastID, p_Anreise, p_Abreise, FALSE, FALSE);
+CALL new_Buchungen_Zimmer(p_ZimmerID, p_KundeID, Mitarbeiter_Tag, LastID, p_Anreise, p_Abreise, FALSE, FALSE);
 	 
 	
 END//
