@@ -119,3 +119,10 @@ select{
     flex: 1;
     width: 45%;
 }
+
+
+#zeitraum{
+    display: flex;
+    justify-content: space-between;
+    width: 300px;
+}

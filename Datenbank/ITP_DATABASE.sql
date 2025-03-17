@@ -172,22 +172,23 @@ CREATE TABLE IF NOT EXISTS `kunde` (
   `Stammgast` tinyint(1) DEFAULT NULL,
   `Passwort` varchar(100) DEFAULT NULL,
   `Gast` tinyint(1) DEFAULT NULL,
+  `Anrede` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`KundeID`)
 ) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
 -- Exportiere Daten aus Tabelle funrest.kunde: ~10 rows (ungefähr)
-INSERT INTO `kunde` (`KundeID`, `Vorname`, `Nachname`, `Geschlecht`, `Geburtsdatum`, `Ort`, `Straße`, `PLZ`, `Hausnummer`, `Email`, `Stammgast`, `Passwort`, `Gast`) VALUES
-	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0),
-	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0),
-	(3, 'Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', 0, 'passwort789', 1),
-	(4, 'Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', 1, 'passwort101', 1),
-	(5, 'Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', 0, 'passwort202', 0),
-	(6, 'Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', 1, 'passwort303', 1),
-	(7, 'Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', 0, 'passwort404', 1),
-	(8, 'Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', 1, 'passwort505', 0),
-	(9, 'Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', 1, 'passwort606', 1),
-	(10, 'Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', 0, 'passwort707', 0),
-	(11, 'John', 'Doe', 'Männlich', '1990-01-01', 'Berlin', 'Hauptstraße', '10115', '1', 'john.doe@example.com', 1, 'passwort123', 0);
+INSERT INTO `kunde` (`KundeID`, `Vorname`, `Nachname`, `Geschlecht`, `Geburtsdatum`, `Ort`, `Straße`, `PLZ`, `Hausnummer`, `Email`, `Stammgast`, `Passwort`, `Gast`, `Anrede`) VALUES
+	(1, 'Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', 1, 'passwort123', 0, NULL),
+	(2, 'Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', 1, 'passwort456', 0, NULL),
+	(3, 'Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', 0, 'passwort789', 1, NULL),
+	(4, 'Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', 1, 'passwort101', 1, NULL),
+	(5, 'Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', 0, 'passwort202', 0, NULL),
+	(6, 'Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', 1, 'passwort303', 1, NULL),
+	(7, 'Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', 0, 'passwort404', 1, NULL),
+	(8, 'Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', 1, 'passwort505', 0, NULL),
+	(9, 'Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', 1, 'passwort606', 1, NULL),
+	(10, 'Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', 0, 'passwort707', 0, NULL),
+	(11, 'John', 'Doe', 'Männlich', '1990-01-01', 'Berlin', 'Hauptstraße', '10115', '1', 'john.doe@example.com', 1, 'passwort123', 0, NULL);
 
 -- Exportiere Struktur von Tabelle funrest.mitarbeiter
 CREATE TABLE IF NOT EXISTS `mitarbeiter` (
@@ -224,69 +225,74 @@ CREATE TABLE IF NOT EXISTS `rechnungen` (
   `RechnungID` int(11) NOT NULL AUTO_INCREMENT,
   `KundeID` int(11) DEFAULT NULL,
   `MitarbeiterID` int(11) DEFAULT NULL,
+  `Erstelldatum` date DEFAULT NULL,
   PRIMARY KEY (`RechnungID`),
   KEY `KundeID` (`KundeID`),
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rechnungen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rechnungen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=55 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rechnungen: ~54 rows (ungefähr)
-INSERT INTO `rechnungen` (`RechnungID`, `KundeID`, `MitarbeiterID`) VALUES
-	(1, 1, NULL),
-	(2, 1, 13),
-	(3, 1, 1),
-	(4, 1, 13),
-	(5, 1, 13),
-	(6, 1, 13),
-	(7, 1, 13),
-	(8, 1, 13),
-	(9, 1, 13),
-	(10, 1, 13),
-	(11, 1, 13),
-	(12, 1, 13),
-	(13, 1, 13),
-	(14, 1, 13),
-	(15, 1, 13),
-	(16, 1, 13),
-	(17, 1, 13),
-	(18, 1, 13),
-	(19, 1, 13),
-	(20, 1, 13),
-	(21, 1, 13),
-	(22, 1, 13),
-	(23, 1, 13),
-	(24, 1, 13),
-	(25, 1, 13),
-	(26, 1, 13),
-	(27, 1, 13),
-	(28, 1, 13),
-	(29, 1, 13),
-	(30, 1, 13),
-	(31, 1, 13),
-	(32, 1, 13),
-	(33, 1, 13),
-	(34, 1, 13),
-	(35, 1, 13),
-	(36, 1, 13),
-	(37, 1, 13),
-	(38, 1, 13),
-	(39, 1, 13),
-	(40, 1, 13),
-	(41, 1, 13),
-	(42, 1, 13),
-	(43, 1, 13),
-	(44, 1, 13),
-	(45, 1, 13),
-	(46, 1, 13),
-	(47, 1, 13),
-	(48, 1, 13),
-	(49, 1, 13),
-	(50, 1, 14),
-	(51, 1, 14),
-	(52, 1, 14),
-	(53, 1, 14),
-	(54, 1, 14);
+-- Exportiere Daten aus Tabelle funrest.rechnungen: ~53 rows (ungefähr)
+INSERT INTO `rechnungen` (`RechnungID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`) VALUES
+	(1, 1, NULL, NULL),
+	(2, 1, 13, NULL),
+	(3, 1, 1, NULL),
+	(4, 1, 13, NULL),
+	(5, 1, 13, NULL),
+	(6, 1, 13, NULL),
+	(7, 1, 13, NULL),
+	(8, 1, 13, NULL),
+	(9, 1, 13, NULL),
+	(10, 1, 13, NULL),
+	(11, 1, 13, NULL),
+	(12, 1, 13, NULL),
+	(13, 1, 13, NULL),
+	(14, 1, 13, NULL),
+	(15, 1, 13, NULL),
+	(16, 1, 13, NULL),
+	(17, 1, 13, NULL),
+	(18, 1, 13, NULL),
+	(19, 1, 13, NULL),
+	(20, 1, 13, NULL),
+	(21, 1, 13, NULL),
+	(22, 1, 13, NULL),
+	(23, 1, 13, NULL),
+	(24, 1, 13, NULL),
+	(25, 1, 13, NULL),
+	(26, 1, 13, NULL),
+	(27, 1, 13, NULL),
+	(28, 1, 13, NULL),
+	(29, 1, 13, NULL),
+	(30, 1, 13, NULL),
+	(31, 1, 13, NULL),
+	(32, 1, 13, NULL),
+	(33, 1, 13, NULL),
+	(34, 1, 13, NULL),
+	(35, 1, 13, NULL),
+	(36, 1, 13, NULL),
+	(37, 1, 13, NULL),
+	(38, 1, 13, NULL),
+	(39, 1, 13, NULL),
+	(40, 1, 13, NULL),
+	(41, 1, 13, NULL),
+	(42, 1, 13, NULL),
+	(43, 1, 13, NULL),
+	(44, 1, 13, NULL),
+	(45, 1, 13, NULL),
+	(46, 1, 13, NULL),
+	(47, 1, 13, NULL),
+	(48, 1, 13, NULL),
+	(49, 1, 13, NULL),
+	(50, 1, 14, NULL),
+	(51, 1, 14, NULL),
+	(52, 1, 14, NULL),
+	(53, 1, 14, NULL),
+	(54, 1, 14, NULL),
+	(55, 1, 2, '2025-02-11'),
+	(56, 1, 3, '2025-02-11'),
+	(57, 2, 2, '2025-02-11'),
+	(58, 2, 3, '2025-02-11');
 
 -- Exportiere Struktur von Tabelle funrest.restaurant_tische
 CREATE TABLE IF NOT EXISTS `restaurant_tische` (
@@ -347,14 +353,21 @@ CREATE TABLE IF NOT EXISTS `rezensionen` (
   `Anzahl_Sterne` int(11) DEFAULT NULL,
   `Titel` varchar(100) DEFAULT NULL,
   `Inhalt` varchar(60000) DEFAULT NULL,
+  `Genehmigt` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`RezensionenID`),
   KEY `KundeID` (`KundeID`),
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rezensionen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rezensionen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rezensionen: ~0 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.rezensionen: ~5 rows (ungefähr)
+INSERT INTO `rezensionen` (`RezensionenID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`, `Anzahl_Sterne`, `Titel`, `Inhalt`, `Genehmigt`) VALUES
+	(1, 1, 2, '2025-02-11', 5, 'Großartiges Erlebnis', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel.', 1),
+	(2, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. NICHT!!!!', 1),
+	(3, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. NICHT!!!!', 0),
+	(4, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. NICHT!!!!', 0),
+	(5, 1, 2, '2025-02-11', 2, 'Großartiges Erlebnis nicht ', 'Der Service war hervorragend und das Zimmer war sauber und komfortabel. doch!!!!', 1);
 
 -- Exportiere Struktur von Tabelle funrest.zimmer
 CREATE TABLE IF NOT EXISTS `zimmer` (
@@ -766,7 +779,8 @@ CREATE TABLE IF NOT EXISTS Kunde (
     Email VARCHAR(100),
     Stammgast BOOL,
     Passwort VARCHAR(100),
-    Gast BOOL
+    Gast BOOL,
+    Anrede VARCHAR(50)
     
 );
 
@@ -813,6 +827,7 @@ CREATE TABLE IF NOT EXISTS Rechnungen (
     RechnungID INT AUTO_INCREMENT PRIMARY KEY,
     KundeID INT,
     MitarbeiterID INT,
+    Erstelldatum DATE,
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID),
     FOREIGN KEY (MitarbeiterID) REFERENCES Mitarbeiter(MitarbeiterID)
 );
@@ -857,7 +872,8 @@ CREATE TABLE IF NOT EXISTS Rezensionen (
     Erstelldatum DATE,
     Anzahl_Sterne INT,
     Titel VARCHAR(100),
-    Inhalt VARCHAR(60000)
+    Inhalt VARCHAR(60000),
+    Genehmigt BOOL
     
 );
 
@@ -925,18 +941,18 @@ DELIMITER //
 CREATE PROCEDURE `data_Kunde`()
     COMMENT 'Testdaten für die Kunden Tabelle'
 BEGIN
-INSERT INTO Kunde (Vorname, Nachname, Geschlecht, Geburtsdatum, Ort, Straße, PLZ, Hausnummer, Email, Stammgast, Passwort, Gast)
+INSERT INTO Kunde (Vorname, Nachname, Geschlecht, Geburtsdatum, Ort, Straße, PLZ, Hausnummer, Email, Stammgast, Passwort, Gast, Anrede)
 VALUES
-('Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', TRUE, 'passwort123', FALSE),
-('Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', TRUE, 'passwort456', FALSE),
-('Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', FALSE, 'passwort789', TRUE),
-('Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', TRUE, 'passwort101', TRUE),
-('Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', FALSE, 'passwort202', FALSE),
-('Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', TRUE, 'passwort303', TRUE),
-('Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', FALSE, 'passwort404', TRUE),
-('Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', TRUE, 'passwort505', FALSE),
-('Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', TRUE, 'passwort606', TRUE),
-('Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', FALSE, 'passwort707', FALSE);
+('Max', 'Mustermann', 'Männlich', '1985-05-10', 'Berlin', 'Musterstraße', '10115', '1', 'max.mustermann@example.com', TRUE, 'passwort123', FALSE, 'Herr'),
+('Erika', 'Mustermann', 'Weiblich', '1990-07-15', 'Hamburg', 'Beispielweg', '20095', '2', 'erika.mustermann@example.com', TRUE, 'passwort456', FALSE, 'Herr'),
+('Hans', 'Müller', 'Männlich', '1980-03-22', 'München', 'Hauptstraße', '80331', '3', 'hans.mueller@example.com', FALSE, 'passwort789', TRUE, 'Herr'),
+('Anna', 'Schmidt', 'Weiblich', '1995-09-30', 'Köln', 'Nebenstraße', '50667', '4', 'anna.schmidt@example.com', TRUE, 'passwort101', TRUE, 'Keine Angabe'),
+('Peter', 'Fischer', 'Männlich', '1975-01-05', 'Frankfurt', 'Bachweg', '60311', '5', 'peter.fischer@example.com', FALSE, 'passwort202', FALSE, 'Herr'),
+('Laura', 'Weber', 'Weiblich', '1988-11-20', 'Stuttgart', 'Waldstraße', '70173', '6', 'laura.weber@example.com', TRUE, 'passwort303', TRUE, 'Frau'),
+('Klaus', 'Becker', 'Männlich', '1992-02-14', 'Düsseldorf', 'Blumenweg', '40213', '7', 'klaus.becker@example.com', FALSE, 'passwort404', TRUE, 'Herr'),
+('Marie', 'Hofmann', 'Weiblich', '1983-06-25', 'Leipzig', 'Parkstraße', '04109', '8', 'marie.hofmann@example.com', TRUE, 'passwort505', FALSE, 'Herr'),
+('Stefan', 'Schwarz', 'Männlich', '1998-12-10', 'Dortmund', 'Schulweg', '44135', '9', 'stefan.schwarz@example.com', TRUE, 'passwort606', TRUE, 'Herr'),
+('Julia', 'Richter', 'Weiblich', '1986-04-18', 'Hannover', 'Ringstraße', '30159', '10', 'julia.richter@example.com', FALSE, 'passwort707', FALSE, 'Frau');
 
 END//
 DELIMITER ;
@@ -1359,7 +1375,7 @@ BEGIN
 	
     DECLARE Mitarbeiter_Tag INT;
     DECLARE Freies_Zimmer_ID INT;
-    DECLARE LastID INT;
+
 
     
     SELECT MitarbeiterID INTO Mitarbeiter_Tag
@@ -1381,24 +1397,12 @@ BEGIN
 	 LIMIT 1;
 	
 	
-	SELECT z.ZimmerID
-	FROM zimmer AS z
-	WHERE z.Kategorie = p_Kategorie
-	AND z.Zimmerart = p_Zimmerart
-	AND z.ZimmerID NOT IN (   
-    SELECT bz.ZimmerID
-    FROM zimmer AS z
-    inner JOIN Buchungen_Zimmer AS bz  ON bz.ZimmerID = z.ZimmerID
-    WHERE p_Anreise <= bz.Abreise AND p_Abreise >= bz.Anreise
-    AND z.Zimmerart = p_Zimmerart
-    AND z.Kategorie = p_Kategorie);
 
    IF Freies_Zimmer_ID IS NOT null THEN
-   	SELECT TRUE AS Buchung; 
-
-    CALL new_Rechnungen(p_KundeID, Mitarbeiter_Tag, LastID);
-   
-	 CALL new_Buchungen_Zimmer(Freies_Zimmer_ID, p_KundeID, Mitarbeiter_Tag, LastID, p_Anreise, p_Abreise, FALSE, FALSE);
+   	 
+	SELECT Freies_Zimmer_ID AS p_ZimmerID, p_KundeID AS p_KundeID,  Mitarbeiter_Tag AS p_MitarbeiterID, p_Anreise AS p_Anreise, p_Abreise AS p_Abreise;
+	
+	 
     ELSE
    	SELECT FALSE AS Buchung;
     END IF;
@@ -1413,9 +1417,64 @@ DELIMITER //
 CREATE PROCEDURE `get_Passwort`(
 	IN `p_Email` VARCHAR(100)
 )
-    COMMENT 'Bekommt die email des Kunden und gibt das Passwort zurück'
+    COMMENT 'Bekommt die email des Kunden und gibt das Passwort zurück '
 BEGIN
-    SELECT Passwort FROM Kunde WHERE Email = p_Email;
+
+    DECLARE selection VARCHAR(50);
+    DECLARE adminStatus BOOL;
+
+
+    SELECT Passwort INTO selection
+    FROM Kunde
+    WHERE Email = p_Email;
+
+
+    IF selection IS NULL THEN
+        SELECT Passwort, IstAdmin INTO selection, adminStatus
+        FROM Mitarbeiter
+        WHERE Email = p_Email;
+    END IF;
+
+
+    SELECT selection, adminStatus;
+	 
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.get_Rechnungen
+DELIMITER //
+CREATE PROCEDURE `get_Rechnungen`()
+BEGIN
+
+SELECT r.RechnungID, r.KundeID, r.MitarbeiterID, r.Erstelldatum, bz.ZimmerID, bz.Anreise, bz.Abreise, bz.Gezahlt
+FROM rechnungen AS r
+INNER JOIN buchungen_zimmer AS bz ON bz.RechnungID = r.RechnungID
+WHERE bz.Storniert = FALSE;
+
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.get_Rezensionen_Genehmigt
+DELIMITER //
+CREATE PROCEDURE `get_Rezensionen_Genehmigt`()
+BEGIN
+    SELECT *
+    FROM rezensionen AS r
+    WHERE r.Genehmigt = TRUE 
+    ORDER BY Erstelldatum DESC;
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.get_Rezensionen_Nicht_Genehmigt
+DELIMITER //
+CREATE PROCEDURE `get_Rezensionen_Nicht_Genehmigt`()
+BEGIN
+
+   SELECT *
+    FROM rezensionen AS r
+    WHERE r.Genehmigt = FALSE 
+    ORDER BY Erstelldatum DESC;
+    
 END//
 DELIMITER ;
 
@@ -1494,9 +1553,9 @@ CREATE PROCEDURE `new_Kunde`(
 	IN `p_PLZ` VARCHAR(50),
 	IN `p_Hausnummer` VARCHAR(50),
 	IN `p_Email` VARCHAR(100),
-	IN `p_Stammgast` BOOL,
 	IN `p_Passwort` VARCHAR(100),
-	IN `p_Gast` BOOL
+	IN `p_Gast` BOOL,
+	IN `p_Anrede` INT
 )
     COMMENT 'Erstellet einen Kunden anhand der Übergabeparameter'
 BEGIN
@@ -1512,7 +1571,8 @@ BEGIN
         Email,
         Stammgast,
         Passwort,
-        Gast
+        Gast,
+        Anrede
     ) VALUES (
         p_Vorname,
         p_Nachname,
@@ -1523,9 +1583,10 @@ BEGIN
         p_PLZ,
         p_Hausnummer,
         p_Email,
-        p_Stammgast,
+        false,
         p_Passwort,
-        p_Gast
+        p_Gast,
+        p_Anrede
     );
 END//
 DELIMITER ;
@@ -1539,15 +1600,99 @@ CREATE PROCEDURE `new_Rechnungen`(
 )
     COMMENT 'Erstellet eine Rechnung anhand der Übergabeparameter'
 BEGIN
-    INSERT INTO Rechnungen (
+		DECLARE gleiche_Rechnung INT;
+     
+      SELECT RechnungID INTO gleiche_Rechnung
+      FROM Rechnungen
+      WHERE KundeID = p_KundeID
+      AND MitarbeiterID = p_MitarbeiterID
+      AND Erstelldatum = CURRENT_DATE;
+     
+        	
+
+
+   	IF gleiche_Rechnung IS NOT null THEN
+   	
+   	SET p_LastID = gleiche_Rechnung;
+   	else
+   	
+   	 INSERT INTO Rechnungen (
         KundeID,
-        MitarbeiterID
-    ) VALUES (
+        MitarbeiterID,
+        Erstelldatum
+  		 ) 
+		 VALUES (
         p_KundeID,
-        p_MitarbeiterID
-    );
+        p_MitarbeiterID,
+        current_date
+   	 );
     
      SET p_LastID = LAST_INSERT_ID();
+     END IF;
+   	
+   	
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.new_Rezension
+DELIMITER //
+CREATE PROCEDURE `new_Rezension`(
+	IN `p_KundeID` INT,
+	IN `p_MitarbeiterID` INT,
+	IN `p_Anzahl_Sterne` INT,
+	IN `p_Titel` VARCHAR(100),
+	IN `p_Inhalt` VARCHAR(60000)
+)
+BEGIN
+    INSERT INTO Rezensionen (
+        KundeID,
+        MitarbeiterID,
+        Erstelldatum,
+        Anzahl_Sterne,
+        Titel,
+        Inhalt,
+        Genehmigt
+    ) VALUES (
+        p_KundeID,
+        p_MitarbeiterID,
+        current_Date,
+        p_Anzahl_Sterne,
+        p_Titel,
+        p_Inhalt,
+        FALSE
+    );
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.set_Buchung_Zimmer
+DELIMITER //
+CREATE PROCEDURE `set_Buchung_Zimmer`(
+	IN `p_Anreise` DATE,
+	IN `p_Abreise` DATE,
+	IN `p_KundeID` INT,
+	IN `p_ZimmerID` INT,
+	IN `p_MitarbeiterID` INT
+)
+BEGIN
+   DECLARE LastID INT;
+    
+CALL new_Rechnungen(p_KundeID, p_MitarbeiterID, LastID);
+   
+CALL new_Buchungen_Zimmer(p_ZimmerID, p_KundeID, p_MitarbeiterID, LastID, p_Anreise, p_Abreise, FALSE, FALSE);
+	 
+	
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.set_Rezensionen_Genehmigt
+DELIMITER //
+CREATE PROCEDURE `set_Rezensionen_Genehmigt`(
+    IN p_RezensionenID INT
+)
+BEGIN
+    UPDATE Rezensionen
+    SET Genehmigt = TRUE
+    WHERE RezensionenID = p_RezensionenID;
 END//
 DELIMITER ;
 
