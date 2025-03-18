@@ -1,3 +1,4 @@
+/* Setzt die Standard-Margin auf 0 und definiert die Schriftart und Hintergrundfarbe */
 body {
     font-family: Arial, sans-serif;
     background-color: #f4f4f4;
@@ -5,6 +6,7 @@ body {
     padding: 0;
 }
 
+/* Stile für den Header-Bereich */
 #menu-header {
     display: flex;
     background-color: #000000;
@@ -14,6 +16,7 @@ body {
     justify-content: space-between;
 }
 
+/* Stile für das Logo */
 #logo {
     width: 250px;
     height: 50px;
@@ -23,6 +26,7 @@ body {
     align-items: center;
 }
 
+/* Stile für das Menü */
 #menu ul {
     list-style: none;
     margin: 0;
@@ -31,20 +35,25 @@ body {
     align-items: center;
 }
 
+/* Stile für die Menüelemente */
 #menu ul li {
     margin: 0 25px;
 }
 
+/* Stile für die Links im Menü */
 #menu ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.3em;
 }
 
+/* Hover-Effekt für die Links im Menü */
 #menu ul li a:hover {
     color: #4fa7ff;
 }
-button{
+
+/* Stile für Buttons */
+button {
     background-color: #0d86ff;
     color: white;
     font-size: 1.2em;
@@ -53,23 +62,17 @@ button{
     padding: 8px;
 }
 
-button:hover{
+/* Hover-Effekt für Buttons */
+button:hover {
     background-color: #085eb5;
 }
 
-button:active{
+/* Active-Effekt für Buttons */
+button:active {
     background-color: #4fa7ff;
 }
 
-section#menu {
-    padding: 20px;
-    max-width: 800px;
-    margin: 20px auto;
-    background-color: white;
-    border-radius: 10px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-}
-
+/* Stile für den Speisekarten-Bereich */
 section#karte {
     padding: 20px;
     max-width: 800px;
@@ -79,6 +82,7 @@ section#karte {
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
 
+/* Stile für die Listen in der Speisekarte */
 #karte ul {
     list-style: none;
     margin: 10;
@@ -86,23 +90,25 @@ section#karte {
     align-items: center;
 }
 
-#karte h3{ 
+/* Stile für die Überschriften in der Speisekarte */
+#karte h3 {
     margin-left: 30px;
 }
 
+/* Stile für die Listenelemente in der Speisekarte */
 #karte ul li {
     margin-top: 15px;
     margin-left: 60px;
 }
 
+/* Stile für die Links in der Speisekarte */
 #karte ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.3em;
 }
 
+/* Hover-Effekt für die Links in der Speisekarte */
 #karte ul li a:hover {
     color: #f0a500;
 }
-
-

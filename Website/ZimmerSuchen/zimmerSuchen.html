@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Zimmer Suchen</title>
     <link rel="stylesheet" href="zimmerSuchen.css">
 </head>
 <body>
+    <!-- Header-Bereich -->
     <header id="menu-header">  
+        <!-- Logo-Link zur Startseite -->
         <a href="../Startseite/startseite.html">
             <img src="../../Resources/White Trans Logo.png" id="logo">   
-       </a>      
+        </a>      
+        <!-- Navigationsmenü -->
         <nav id="menu">
             <ul>
                 <li><a href="../ZimmerSuchen/zimmerSuchen.html">Zimmer</a></li>
@@ -18,37 +21,45 @@
                 <li><a href="../Startseite/startseite.html">Rezensionen</a></li>
             </ul>
         </nav>
-            <a href="../Anmelden/anmelden.html">
-                <button id="signin">Anmelden</button>
-            </a>
+        <!-- Anmelden-Button -->
+        <a href="../Anmelden/anmelden.html">
+            <button id="signin">Anmelden</button>
+        </a>
     </header>
 
+    <!-- Formular zum Suchen eines Zimmers -->
     <form id="screen">
         <h1>Zimmer suchen</h1>
-        <label for="">Kategorie:</label>
-        <select required>
+
+        <!-- Kategorie-Auswahl -->
+        <label for="kategorie">Kategorie:</label>
+        <select id="kategorie" required>
             <option>Standard</option>
             <option>Premium</option>
             <option>Luxus</option>
         </select><br>
         <br>
-        <label for="">Einzel-/Doppelzimmer:</label>
-        <select required>
+
+        <!-- Einzel-/Doppelzimmer-Auswahl -->
+        <label for="zimmerTyp">Einzel-/Doppelzimmer:</label>
+        <select id="zimmerTyp" required>
             <option>Einzelzimmer</option>
             <option>Doppelzimmer</option>
         </select><br>
 
-        <label for="" id="vonBis">Von/ Bis:</label>
-
+        <!-- Von/Bis-Datum-Auswahl -->
+        <label for="vonTag" id="vonBis">Von/ Bis:</label>
         <div id="zeitraum">
             <input type="date" id="vonTag" required>
             <input type="date" id="bisTag" required>
         </div>
-    
-    <br>
+        <br>
 
-       <input type="submit" value="Zimmer Suchen" id="submit"><br>
+        <!-- Submit-Button -->
+        <input type="submit" value="Zimmer Suchen" id="submit"><br>
     </form>
+
+    <!-- JavaScript Datei -->
     <script src="zimmerSuchen.js"></script>
 </body>
 </html>

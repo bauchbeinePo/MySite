@@ -3,61 +3,76 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registrieren</title>
     <link rel="stylesheet" href="registrieren.css">
 </head>
 <body>
+    <!-- Registrierungsformular -->
     <form action="../Startseite/startseite.html" id="screen">
         <h1>Registrieren</h1>
 
-        <label for="">Anrede:</label>
-        
-        <select required>
+        <!-- Anrede Auswahl -->
+        <label for="anrede">Anrede:</label>
+        <select id="anrede" required>
             <option>Herr</option>
             <option>Frau</option>
             <option>Keine Angabe</option>
         </select><br>
 
-        <label for="">Geschlecht:</label>
-        
-        <select required>
+        <!-- Geschlecht Auswahl -->
+        <label for="geschlecht">Geschlecht:</label>
+        <select id="geschlecht" required>
             <option>Männlich</option>
             <option>Weiblich</option>
             <option>Divers</option>
         </select><br>
-        <label for="">Name:</label>
+
+        <!-- Name Eingabefeld -->
+        <label for="name">Name:</label>
         <input type="text" id="name" required><br>
 
-        <label for="">Vorname:</label>
+        <!-- Vorname Eingabefeld -->
+        <label for="vorname">Vorname:</label>
         <input type="text" id="vorname" required><br>
 
+        <!-- Straße und Hausnummer Eingabefelder -->
         <div>
-            <label for="postleitzahl" id="postleitzahl">Straße/ Hausnummer:</label><br>
+            <label for="strasse">Straße/ Hausnummer:</label><br>
             <input type="text" id="strasse" required>
             <input type="text" id="hausnummer" required>
         </div><br>
-        <div>
-                <label for="postleitzahl" id="postleitzahl">Postleitzahl/ Stadt:</label><br>
-            <input type="text" id="postleitzahl" required>
 
+        <!-- Postleitzahl und Stadt Eingabefelder -->
+        <div>
+            <label for="postleitzahl">Postleitzahl/ Stadt:</label><br>
+            <input type="text" id="postleitzahl" required>
             <input type="text" id="stadt" required>
         </div><br>
-        
-        <label for="">Geburtsdatum:</label>
-        <input type="date" id="password" required><br>
 
-        <label for="">E-Mail Adresse:</label>
+        <!-- Geburtsdatum Eingabefeld -->
+        <label for="geburtsdatum">Geburtsdatum:</label>
+        <input type="date" id="geburtsdatum" required><br>
+
+        <!-- E-Mail Adresse Eingabefeld -->
+        <label for="email">E-Mail Adresse:</label>
         <input type="text" id="email" required><br>
 
-        <label for="">Passwort:</label>
+        <!-- Passwort Eingabefeld -->
+        <label for="password">Passwort:</label>
         <input type="password" id="password" required><br>
 
-        <label for="">Passwort wiederholen:</label>
+        <!-- Passwort wiederholen Eingabefeld -->
+        <label for="password_wiederholen">Passwort wiederholen:</label>
         <input type="password" id="password_wiederholen" required><br>
 
-       <input type="submit" value="Registrieren" id="submit"><br>
-       <a href="../Anmelden/anmelden.html">Anmelden</a>
-   </form>
-   <script src="registrieren.js"></script>
+        <!-- Registrieren Button -->
+        <input type="submit" value="Registrieren" id="submit"><br>
+
+        <!-- Anmelden Link -->
+        <a href="../Anmelden/anmelden.html">Anmelden</a>
+    </form>
+
+    <!-- JavaScript Datei -->
+    <script src="registrieren.js"></script>
 </body>
 </html>

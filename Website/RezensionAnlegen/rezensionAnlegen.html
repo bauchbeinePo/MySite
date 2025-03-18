@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rezension Anlegen</title>
     <link rel="stylesheet" href="rezensionAnlegen.css">
 </head>
 <body>
-    <header id="menu-header">  
+    <!-- Header-Bereich -->
+    <header id="menu-header">
+        <!-- Logo-Link zur Startseite -->
         <a href="../Startseite/startseite.html">
-            <img src="../../Resources/White Trans Logo.png" id="logo">   
-       </a>      
+            <img src="../../Resources/White Trans Logo.png" id="logo">
+        </a>
+        <!-- Navigationsmenü -->
         <nav id="menu">
             <ul>
                 <li><a href="../ZimmerSuchen/zimmerSuchen.html">Zimmer</a></li>
@@ -18,19 +21,21 @@
                 <li><a href="../Startseite/startseite.html">Rezensionen</a></li>
             </ul>
         </nav>
-            <a href="../Anmelden/anmelden.html">
-                <button id="signin">Anmelden</button>
-            </a>
+        <!-- Anmelden-Button -->
+        <a href="../Anmelden/anmelden.html">
+            <button id="signin">Anmelden</button>
+        </a>
     </header>
 
+    <!-- Hauptinhalt -->
     <div id="outerScreen">
-
         <h1>Rezension anlegen</h1>
 
+        <!-- Formular zum Anlegen einer Rezension -->
         <form action="../Startseite/startseite.html" id="screen">
-
-            <label for="">Sterne:</label>
-            <select required>
+            <!-- Sterne-Auswahl -->
+            <label for="sterne">Sterne:</label>
+            <select id="sterne" required>
                 <option value="5">⭐⭐⭐⭐⭐</option>
                 <option value="4">⭐⭐⭐⭐</option>
                 <option value="3">⭐⭐⭐</option>
@@ -38,18 +43,20 @@
                 <option value="1">⭐</option>
             </select><br>
 
-            <label for="">Titel</label>
-            <input type="text" name="" id="" required>
+            <!-- Titel-Eingabefeld -->
+            <label for="titel">Titel:</label>
+            <input type="text" id="titel" required><br>
 
-            <label for="" id="vonBis">Kommentar</label>
+            <!-- Kommentar-Eingabefeld -->
+            <label for="kommentar">Kommentar:</label>
+            <textarea id="kommentar" required></textarea><br>
 
-            <textarea name="" id="" required></textarea>
-        
-            <br>
-
+            <!-- Submit-Button -->
             <input type="submit" value="Rezension anlegen" id="submit"><br>
         </form>
     </div>
+
+    <!-- JavaScript Datei -->
     <script src="rezensionAnlegen.js"></script>
 </body>
 </html>

@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Rezensionen Verwalten</title>
     <link rel="stylesheet" href="rezensionenVerwalten.css">
 </head>
 <body>
-    <header id="menu-header">  
+    <!-- Header-Bereich -->
+    <header id="menu-header">
+        <!-- Logo-Link zur Startseite -->
         <a href="../Startseite/startseite.html">
-            <img src="../../Resources/White Trans Logo.png" id="logo">   
-       </a>      
+            <img src="../../Resources/White Trans Logo.png" id="logo">
+        </a>
+        <!-- Navigationsmenü -->
         <nav id="menu">
             <ul>
                 <li><a href="../ZimmerSuchen/zimmerSuchen.html">Zimmer</a></li>
@@ -18,41 +21,39 @@
                 <li><a href="../Startseite/startseite.html">Rezensionen</a></li>
             </ul>
         </nav>
-            <a href="../Anmelden/anmelden.html">
-                <button id="signin">Anmelden</button>
-            </a>
+        <!-- Anmelden-Button -->
+        <a href="../Anmelden/anmelden.html">
+            <button id="signin">Anmelden</button>
+        </a>
     </header>
 
-    
+    <!-- Hauptinhalt -->
     <div id="outerScreen">
-
         <h1>Rezensionen Verwalten</h1>
 
         <div id="screen">
-
+            <!-- Autor-Eingabefeld -->
             <label for="" id="vonBis">Autor</label>
             <input type="text" id="" readonly><br>
 
+            <!-- Sterne-Eingabefeld -->
             <label for="">Sterne:</label>
+            <input type="text" name="" id="" readonly><br>
 
-            <input type="text" name="" id="" readonly> <br>
-
+            <!-- Titel-Eingabefeld -->
             <label for="">Titel</label>
-            <input type="text" name="" id="" readonly>
+            <input type="text" name="" id="" readonly><br>
 
+            <!-- Kommentar-Eingabefeld -->
             <label for="" id="vonBis">Kommentar</label>
+            <textarea name="" id="" readonly></textarea><br>
 
-            <textarea name="" id="" readonly></textarea>
-        
-            <br>
-
+            <!-- Genehmigen- und Ablehnen-Buttons -->
             <div id="buttons">
                 <button id="genehmigen">✔</button>
                 <button id="ablehnen">✘</button>
             </div>
         </div>
-        
     </div>
-
 </body>
 </html>

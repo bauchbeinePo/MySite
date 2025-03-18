@@ -1,9 +1,11 @@
+/* Setzt die Standard-Margin auf 0 und definiert die Schriftart und Textausrichtung */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     text-align: center;
 }
 
+/* Stile für den Header-Bereich */
 #menu-header {
     display: flex;
     background-color: #000000;
@@ -13,6 +15,7 @@ body {
     justify-content: space-between;
 }
 
+/* Stile für das Logo */
 #logo {
     width: 250px;
     height: 50px;
@@ -22,6 +25,7 @@ body {
     align-items: center;
 }
 
+/* Stile für das Menü */
 #menu ul {
     list-style: none;
     margin: 0;
@@ -30,21 +34,25 @@ body {
     align-items: center;
 }
 
+/* Stile für die Menüelemente */
 #menu ul li {
     margin: 0 25px;
 }
 
+/* Stile für die Links im Menü */
 #menu ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.3em;
 }
 
+/* Hover-Effekt für die Links im Menü */
 #menu ul li a:hover {
     color: #4fa7ff;
 }
 
-button{
+/* Stile für Buttons */
+button {
     background-color: #0d86ff;
     color: white;
     font-size: 1.2em;
@@ -54,39 +62,43 @@ button{
     margin: 7px;
 }
 
-button:hover, #submit:hover{
+/* Hover-Effekt für Buttons */
+button:hover, #submit:hover {
     background-color: #085eb5;
 }
 
-button:active, #submit:active{
+/* Active-Effekt für Buttons */
+button:active, #submit:active {
     background-color: #4fa7ff;
 }
 
-
-#screen{
+/* Stile für den Hauptinhalt */
+#screen {
     margin-top: -10%;
     font-size: 1.2em;
     align-items: center;
     height: 100vh;
     display: flex;
     justify-content: center;
-  
 }
 
-input{
+/* Stile für Eingabefelder */
+input {
     font-size: 1.2em;
     border-radius: 10px;
     width: 300px;
     height: auto;
 }
 
-label{
+/* Stile für Labels */
+label {
     text-align: left;
     font-size: 0.8em;
     margin-bottom: 10px;
 }
 
-#submit{
+/* Stile für den Submit-Button */
+#submit {
     background-color: #0d86ff;
     color: white;
     font-size: 1.1em;
@@ -96,13 +108,14 @@ label{
     max-width: 190px;
 }
 
-a{
+/* Stile für Links */
+a {
     color: #0d86ff;
     text-decoration: none;
 }
 
-
-select{
+/* Stile für Dropdown-Menüs */
+select {
     font-size: 1.2em;
     border-radius: 10px;
     width: 300px;
@@ -110,13 +123,14 @@ select{
     border: 1.6px solid #000000;
 }
 
-
-#vonTag{
+/* Stile für das Von-Datum */
+#vonTag {
     flex: 1;
     width: 45%;
 }
 
-#bisTag{
+/* Stile für das Bis-Datum */
+#bisTag {
     flex: 1;
     width: 45%;
 }
