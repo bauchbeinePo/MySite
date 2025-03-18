@@ -15,4 +15,13 @@ submitButton.onclick = function getFormData() {
         window.location.href = 'zimmerAnzeigen.html';
         
     }
+    console.log("test");
+    getZimmerData(vonDate, bisDate, zimmerTyp, zimmerArt);
+}
+
+async function getZimmerData(vonDate, bisDate, zimmerTyp, zimmerArt) {
+    const response = await fetch('http://localhost:3000/zimmer?anreise=${vonDate}&abreise=${bisDate}&kategorie=${zimmerTyp}&zimmerart=${zimmerArt}');
+    const zimmerData = await response.json();
+    alert(zimmerData);
+    return zimmerData;
 }
