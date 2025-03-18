@@ -34,9 +34,24 @@ CREATE TABLE IF NOT EXISTS `buchungen_tisch` (
   CONSTRAINT `buchungen_tisch_ibfk_1` FOREIGN KEY (`TischID`) REFERENCES `restaurant_tische` (`TischID`),
   CONSTRAINT `buchungen_tisch_ibfk_2` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `buchungen_tisch_ibfk_3` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.buchungen_tisch: ~0 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.buchungen_tisch: ~14 rows (ungefähr)
+INSERT INTO `buchungen_tisch` (`Buchungen_TischID`, `TischID`, `KundeID`, `MitarbeiterID`, `Zeitpunkt`, `Stoniert`) VALUES
+	(1, 3, 4, 5, '2025-12-12 00:00:00', 0),
+	(2, 13, 4, 5, '2025-12-12 00:00:00', 0),
+	(3, 23, 4, 5, '2025-12-12 00:00:00', 0),
+	(4, 33, 4, 5, '2025-12-12 00:00:00', 0),
+	(5, 2, 4, 5, '2025-12-12 00:00:00', 0),
+	(6, 7, 4, 5, '2025-12-12 00:00:00', 0),
+	(7, 9, 4, 5, '2025-12-12 00:00:00', 0),
+	(8, 12, 4, 5, '2025-12-12 00:00:00', 0),
+	(9, 17, 4, 5, '2025-12-12 00:00:00', 0),
+	(10, 19, 4, 5, '2025-12-12 00:00:00', 0),
+	(11, 22, 4, 5, '2025-12-12 00:00:00', 0),
+	(12, 27, 4, 5, '2025-12-12 00:00:00', 0),
+	(13, 32, 4, 5, '2025-12-12 00:00:00', 0),
+	(14, 37, 4, 5, '2025-12-12 00:00:00', 0);
 
 -- Exportiere Struktur von Tabelle funrest.buchungen_zimmer
 CREATE TABLE IF NOT EXISTS `buchungen_zimmer` (
@@ -137,11 +152,12 @@ CREATE TABLE IF NOT EXISTS `rechnungen` (
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rechnungen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rechnungen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rechnungen: ~1 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.rechnungen: ~2 rows (ungefähr)
 INSERT INTO `rechnungen` (`RechnungID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`) VALUES
-	(1, 2, 11, '2025-03-18');
+	(1, 2, 11, '2025-03-18'),
+	(2, 4, 5, '2025-03-18');
 
 -- Exportiere Struktur von Tabelle funrest.restaurant_tische
 CREATE TABLE IF NOT EXISTS `restaurant_tische` (
@@ -1201,54 +1217,6 @@ WHERE RezensionenID = pRezensionenID;
 END//
 DELIMITER ;
 
--- Exportiere Struktur von Prozedur funrest.get_free_Tisch
-DELIMITER //
-CREATE PROCEDURE `get_free_Tisch`(
-	IN `p_Anzahl_Plätze` INT,
-	IN `p_Buchungsdatum` DATETIME,
-	IN `p_KundeID` INT
-)
-    COMMENT 'Anhand der Übergabeparameter wird ein Tisch der Frei ist gesucht'
-BEGIN
-	
-
-    DECLARE Mitarbeiter_Tag INT;
-    DECLARE Freier_TischID INT;
-
-    
-    SELECT MitarbeiterID INTO Mitarbeiter_Tag
-	 FROM mitarbeiter AS m
-	 WHERE m.Restaurant_Dienst = DAYOFWEEK(p_Buchungsdatum);  -- prüft welcher Mitarbeiter an diesem Tag schicht hat und weißt ihm das Recht zu
-
-
-	SELECT rt.TischID INTO Freier_TischID
-	FROM restaurant_tische AS rt
-	WHERE rt.Anzahl_Plätze = p_Anzahl_Plätze
-	AND rt.TischID NOT IN (   
-    SELECT bt.TischID
-    FROM restaurant_tische AS rt
-    inner JOIN buchungen_tisch AS bt ON rt.TischID = bt.TischID
-    WHERE DAY(bt.Zeitpunkt) = DAY(p_Buchungsdatum)
-    and rt.Anzahl_Plätze = p_Anzahl_Plätze
-    AND ABS(TIMESTAMPDIFF(HOUR, bt.Zeitpunkt, p_Buchungsdatum)) <= 2)
-	 LIMIT 1;
-	
-
-
-   IF Freier_TischID IS NOT null THEN
-   	SELECT TRUE AS Buchung; 
-   	
-   	CALL new_Rechungen(p_KundeID, Mitarbeiter_Tag );
-   	
-   	CALL NEW_Buchungen_Tisch(Freier_TischID, p_KundeID, Mitarbeiter_Tag, p_Buchungsdatum, FALSE);
-
-    ELSE
-   	SELECT FALSE AS Buchung;
-    END IF;
-
-END//
-DELIMITER ;
-
 -- Exportiere Struktur von Prozedur funrest.get_free_Zimmer
 DELIMITER //
 CREATE PROCEDURE `get_free_Zimmer`(
@@ -1329,9 +1297,15 @@ DELIMITER //
 CREATE PROCEDURE `get_Rechnungen`()
 BEGIN
 
-SELECT r.RechnungID, r.KundeID, r.MitarbeiterID, r.Erstelldatum, bz.ZimmerID, bz.Anreise, bz.Abreise, bz.Gezahlt
+SELECT r.RechnungID,r.Erstelldatum, bz.Anreise, bz.Abreise, bz.Gezahlt, k.Vorname, k.Nachname, k.Anrede, k.Ort, k.Straße, k.PLZ, k.Hausnummer, k.Email,
+			DATEDIFF(bz.Abreise, bz.Anreise) AS Aufenthaltstage, -- Berechnung der Aufenthaltsdauer
+    	   zp.Preis * DATEDIFF(bz.Abreise, bz.Anreise) AS Gesamtpreis -- Gesamtpreisberechnung
 FROM rechnungen AS r
 INNER JOIN buchungen_zimmer AS bz ON bz.RechnungID = r.RechnungID
+INNER JOIN kunde AS k ON k.KundeID = r.KundeID
+INNER JOIN zimmer AS z ON z.ZimmerID = bz.ZimmerID
+INNER JOIN zimmer_preis zp ON zp.PreisID = z.Preiskategorie
+
 WHERE bz.Storniert = FALSE;
 
 END//
@@ -1569,6 +1543,54 @@ CALL new_Rechnungen(p_KundeID, Mitarbeiter_Tag, LastID);
 CALL new_Buchungen_Zimmer(p_ZimmerID, p_KundeID, Mitarbeiter_Tag, LastID, p_Anreise, p_Abreise, FALSE, FALSE);
 	 
 	
+END//
+DELIMITER ;
+
+-- Exportiere Struktur von Prozedur funrest.set_free_Tisch
+DELIMITER //
+CREATE PROCEDURE `set_free_Tisch`(
+	IN `p_Anzahl_Plätze` INT,
+	IN `p_Buchungsdatum` DATETIME,
+	IN `p_KundeID` INT
+)
+    COMMENT 'Anhand der Übergabeparameter wird ein Tisch der Frei ist gesucht'
+BEGIN	
+
+    DECLARE Mitarbeiter_Tag INT;
+    DECLARE Freier_TischID INT;
+    DECLARE LastID INT;
+
+    
+    SELECT MitarbeiterID INTO Mitarbeiter_Tag
+	 FROM mitarbeiter AS m
+	 WHERE m.Restaurant_Dienst = DAYOFWEEK(p_Buchungsdatum);  -- prüft welcher Mitarbeiter an diesem Tag schicht hat und weißt ihm das Recht zu
+
+
+	SELECT rt.TischID INTO Freier_TischID
+	FROM restaurant_tische AS rt
+	WHERE rt.Anzahl_Plätze = p_Anzahl_Plätze
+	AND rt.TischID NOT IN (   
+    SELECT bt.TischID
+    FROM restaurant_tische AS rt
+    inner JOIN buchungen_tisch AS bt ON rt.TischID = bt.TischID
+    WHERE DAY(bt.Zeitpunkt) = DAY(p_Buchungsdatum)
+    and rt.Anzahl_Plätze = p_Anzahl_Plätze
+    AND ABS(TIMESTAMPDIFF(HOUR, bt.Zeitpunkt, p_Buchungsdatum)) <= 2)
+	 LIMIT 1;
+	
+
+
+   IF Freier_TischID IS NOT null THEN
+   	SELECT TRUE AS Buchung; 
+   	
+		CALL new_Rechnungen(p_KundeID, Mitarbeiter_Tag, LastID);
+   	
+   	CALL new_Buchungen_Tisch(Freier_TischID, p_KundeID, Mitarbeiter_Tag, p_Buchungsdatum, FALSE);
+
+    ELSE
+   	SELECT FALSE AS Buchung;
+    END IF;
+
 END//
 DELIMITER ;
 
