@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Zimmer Anzeigen</title>
     <link rel="stylesheet" href="zimmerAnzeigen.css">
 </head>
 <body>
+    <!-- Header-Bereich -->
     <header id="menu-header">  
+        <!-- Logo-Link zur Startseite -->
         <a href="../Startseite/startseite.html">
             <img src="../../Resources/White Trans Logo.png" id="logo">   
-       </a>     
+        </a>     
+        <!-- Navigationsmenü -->
         <nav id="menu">
             <ul>
                 <li><a href="../ZimmerSuchen/zimmerSuchen.html">Zimmer</a></li>
@@ -18,38 +21,47 @@
                 <li><a href="../Startseite/startseite.html">Rezensionen</a></li>
             </ul>
         </nav>
-            <a href="../Anmelden/anmelden.html">
-                <button id="signin">Anmelden</button>
-            </a>
+        <!-- Anmelden-Button -->
+        <a href="../Anmelden/anmelden.html">
+            <button id="signin">Anmelden</button>
+        </a>
     </header>
 
+    <!-- Formular zum Anzeigen eines Zimmers -->
     <form action="../Startseite/startseite.html" id="screen">
-        
         <h1>Zimmer</h1>
 
+        <!-- Zimmer-Vorschau -->
         <div id="zimmerPreview">
-            <img src="../../Resources/ZimmerImg.jpg" alt="" id="zimmerImg">
+            <img src="../../Resources/ZimmerImg.jpg" alt="Zimmerbild" id="zimmerImg">
         </div>
 
-        <label for="">Kategorie:</label>
-        <input type="text"id="zimmerTyp" readonly>
+        <!-- Zimmerkategorie-Eingabefeld -->
+        <label for="zimmerTyp">Kategorie:</label>
+        <input type="text" id="zimmerTyp" readonly>
         <br>
-        <label for="">Einzel-/Doppelzimmer:</label>
-        <input type="text"id="zimmerArt" readonly><br>
 
-        <label for="" id="vonBis">Von/ Bis:</label>
+        <!-- Zimmerart-Eingabefeld -->
+        <label for="zimmerArt">Einzel-/Doppelzimmer:</label>
+        <input type="text" id="zimmerArt" readonly>
+        <br>
 
+        <!-- Von/Bis-Eingabefelder -->
+        <label for="vonTag" id="vonBis">Von/ Bis:</label>
         <div>
             <input type="text" id="vonTag" readonly>
             <input type="text" id="bisTag" readonly>
         </div>
 
+        <!-- Preisüberschrift -->
         <h4>[Gesamtpreis]/ [Preis] pro Nacht</h4>
 
-       <input type="submit" value="Zimmer Buchen" id="submit">
-       
-       <br>
+        <!-- Zimmer Buchen Button -->
+        <input type="submit" value="Zimmer Buchen" id="submit">
+        <br>
     </form>
+
+    <!-- JavaScript Datei -->
     <script src="zimmerAnzeigen.js"></script>
 </body>
 </html>

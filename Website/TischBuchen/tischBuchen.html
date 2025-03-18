@@ -3,14 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Tisch Buchen</title>
     <link rel="stylesheet" href="tischBuchen.css">
 </head>
 <body>
+    <!-- Header-Bereich -->
     <header id="menu-header">  
+        <!-- Logo-Link zur Startseite -->
         <a href="../Startseite/startseite.html">
             <img src="../../Resources/White Trans Logo.png" id="logo">   
-       </a>    
+        </a>    
+        <!-- Navigationsmenü -->
         <nav id="menu">
             <ul>
                 <li><a href="../ZimmerSuchen/zimmerSuchen.html">Zimmer</a></li>
@@ -18,30 +21,37 @@
                 <li><a href="../Startseite/startseite.html">Rezensionen</a></li>
             </ul>
         </nav>
-            <a href="../Anmelden/anmelden.html">
-                <button id="signin">Anmelden</button>
-            </a>
+        <!-- Anmelden-Button -->
+        <a href="../Anmelden/anmelden.html">
+            <button id="signin">Anmelden</button>
+        </a>
     </header>
     
-    <img src="../../Resources/restaurant.jpg" alt="">
+    <!-- Bild des Restaurants -->
+    <img src="../../Resources/restaurant.jpg" alt="Restaurant">
 
+    <!-- Formular zum Buchen eines Tisches -->
     <form action="../Startseite/startseite.html" id="screen">
-        
-
         <h1>Tisch Buchen</h1>
 
-        <label for="">Personen:</label>
-        <input type="number"id=""  min="1" max="6">
+        <!-- Personenanzahl-Eingabefeld -->
+        <label for="personen">Personen:</label>
+        <input type="number" id="personen" min="1" max="6">
         <br>
        
-        <label for="" id="tag">Tag:</label>
+        <!-- Datum-Eingabefeld -->
+        <label for="tag">Tag:</label>
         <input type="date" id="tag"><br>
-        <label for="">Zeit:</label>
+
+        <!-- Zeit-Eingabefeld -->
+        <label for="zeit">Zeit:</label>
         <input type="time" id="zeit"><br>
        
-       <input type="submit" value="Tisch reservieren" id="submit"><br>
+        <!-- Submit-Button -->
+        <input type="submit" value="Tisch reservieren" id="submit"><br>
 
-       <a href="../Speisekarte/speisekarte.html">Speisekarte anzeigen</a>
+        <!-- Link zur Speisekarte -->
+        <a href="../Speisekarte/speisekarte.html">Speisekarte anzeigen</a>
     </form>
 </body>
 </html>

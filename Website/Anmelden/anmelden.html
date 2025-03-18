@@ -3,22 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Anmelden</title>
     <link rel="stylesheet" href="anmelden.css">
 </head>
 <body>
+    <!-- Anmeldeformular -->
     <form action="../AdminView/adminView.html" id="screen">
         <h1>Anmelden</h1>
-        <label for="">E-Mail Adresse:</label>
+        
+        <!-- E-Mail Adresse Eingabefeld -->
+        <label for="email">E-Mail Adresse:</label>
         <input type="text" id="email" required>
         <br>
-        <label for="">Passwort:</label>
-        <input type="password" id="password" required><br>
-       <input type="submit" value="Anmelden" id="submit"><br>
-        <a href="">Passwort vergessen?</a><br><br>
-        <a href="../Registrieren/registrieren.html">Registrieren</a><br><br><br><br><br><br>
+        
+        <!-- Passwort Eingabefeld -->
+        <label for="password">Passwort:</label>
+        <input type="password" id="password" required>
+        <br>
+        
+        <!-- Anmelden Button -->
+        <input type="submit" value="Anmelden" id="submit">
+        <br>
+        
+        <!-- Passwort vergessen Link -->
+        <a href="">Passwort vergessen?</a>
+        <br><br>
+        
+        <!-- Registrieren Link -->
+        <a href="../Registrieren/registrieren.html">Registrieren</a>
+        <br><br><br><br><br><br>
+        
+        <!-- Als Gast fortfahren Link -->
         <a href="../Startseite/startseite.html" id="gast">als Gast fortfahren</a>
     </form>
+    
+    <!-- JavaScript Datei -->
     <script src="anmelden.js"></script>
 </body>
 </html>

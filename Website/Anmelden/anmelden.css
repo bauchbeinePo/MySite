@@ -1,9 +1,11 @@
+/* Setzt die Standard-Margin auf 0 und definiert die Schriftart */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
 }
 
-#screen{
+/* Stile für das Anmeldeformular */
+#screen {
     text-align: center;
     font-size: 1.2em;
     align-items: center;
@@ -11,23 +13,25 @@ body {
     display: flex;
     flex-direction: column;
     justify-content: center;
-  
 }
 
-input{
+/* Stile für Eingabefelder */
+input {
     font-size: 1.2em;
     border-radius: 10px;
     width: 300px;
     height: auto;
 }
 
-label{
+/* Stile für Labels */
+label {
     text-align: left;
     font-size: 0.8em;
     margin-bottom: 10px;
 }
 
-#submit{
+/* Stile für den Submit-Button */
+#submit {
     background-color: #0d86ff;
     color: white;
     font-size: 1.1em;
@@ -37,20 +41,24 @@ label{
     max-width: 150px;
 }
 
-button:hover, #submit:hover, a:hover , a:hover{
+/* Hover-Effekt für Buttons und Links */
+button:hover, #submit:hover, a:hover {
     background-color: #085eb5;
 }
 
-button:active, #submit:active, a:active , a:active{
+/* Active-Effekt für Buttons und Links */
+button:active, #submit:active, a:active {
     background-color: #4fa7ff;
 }
 
-a{
+/* Stile für Links */
+a {
     color: #0d86ff;
     text-decoration: none;
 }
 
-#gast{
+/* Stile für den Gast-Link */
+#gast {
     color: rgb(62, 62, 62);
     text-decoration: underline;
 }

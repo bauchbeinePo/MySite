@@ -1,9 +1,11 @@
+/* Setzt die Standard-Margin auf 0 und definiert die Schriftart und Textausrichtung */
 body {
     margin: 0;
     font-family: Arial, sans-serif;
     text-align: center;
 }
 
+/* Stile für den Header-Bereich */
 #menu-header {
     display: flex;
     background-color: #000000;
@@ -13,17 +15,20 @@ body {
     justify-content: space-between;
 }
 
+/* Stile für das Logo */
 #logo {
     width: 250px;
     height: 50px;
 }
 
+/* Stile für das Menü */
 #menu {
     flex: 1;
     display: flex;
     justify-content: center;
 }
 
+/* Stile für die Menüelemente */
 #menu ul {
     list-style: none;
     margin: 0;
@@ -32,21 +37,25 @@ body {
     align-items: center;
 }
 
+/* Stile für die Links im Menü */
 #menu ul li {
     margin: 0 25px;
 }
 
+/* Stile für die Links im Menü */
 #menu ul li a {
     text-decoration: none;
     color: white;
     font-size: 1.3em;
 }
 
+/* Hover-Effekt für die Links im Menü */
 #menu ul li a:hover {
     color: #4fa7ff;
 }
 
-button{
+/* Stile für Buttons */
+button {
     background-color: #0d86ff;
     color: white;
     font-size: 1.2em;
@@ -55,20 +64,24 @@ button{
     padding: 8px;
 }
 
-button:hover{
+/* Hover-Effekt für Buttons */
+button:hover {
     background-color: #085eb5;
 }
 
-button:active{
+/* Active-Effekt für Buttons */
+button:active {
     background-color: #4fa7ff;
 }
-img{
+
+/* Stile für Bilder */
+img {
     width: 100%;
     height: auto;
 }
 
-
-#rezension{
+/* Stile für den Rezensionen-Bereich */
+#rezension {
     text-align: left;
     font-size: 1.2em;
     align-items: start;
@@ -84,36 +97,32 @@ img{
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.139);
 }
 
-#rezension-erstellen{
+/* Stile für den Rezension erstellen Button */
+#rezension-erstellen {
     background-color: #000000;
     margin-left: 190%;
 }
 
-#rezension-erstellen-link{
+/* Stile für den Rezension erstellen Link */
+#rezension-erstellen-link {
     display: flex;
     justify-content: center;
     align-items: center;
     position: relative;
 }
 
-#rezension-erstellen:hover{
+/* Hover-Effekt für den Rezension erstellen Button */
+#rezension-erstellen:hover {
     background-color: #505050;
 }
 
-#rezension-erstellen:active{
+/* Active-Effekt für den Rezension erstellen Button */
+#rezension-erstellen:active {
     background-color: #b6b6b6;
 }
 
+/* Stile für die Hauptüberschrift */
 #header-container h1 {
     flex: 1;
     text-align: center;
 }
-
-#rezension-erstellen:hover{
-    background-color: #505050;
-}
-
-#rezension-erstellen:active{
-    background-color: #b6b6b6;
-}
-
