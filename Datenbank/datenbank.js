@@ -89,6 +89,18 @@ app.get('/zimmer', (req, res) => {
     res.json(results[0]); // Ergebnisse zurückgeben
 });
 });
+
+app.get('/zimmerpreis', (req, res) => {
+  const { anreise, abreise, kategorie, zimmerart } = req.query;
+  const sql = 'CALL get_Zimmer_preis(?, ?, ?, ?)';
+  
+  executeQuery(sql, [anreise, abreise, kategorie, zimmerart], (err, results) => {
+    if (err) {
+        return res.status(500).json({ error: err.message });
+    }
+    res.json(results[0]); // Ergebnisse zurückgeben
+});
+});
  
 app.get('/buchung', (req, res) => {
   const { anreise, abreise, kundeID, zimmerID } = req.query;
