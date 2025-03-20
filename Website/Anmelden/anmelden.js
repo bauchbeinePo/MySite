@@ -9,9 +9,9 @@ document.getElementById('submit').addEventListener('click', function(event) {
 });
 
 async function getPasswordFromDb(inputEmail, inputPassword, event) {
-    const response = await fetch(`http://localhost:3000/passwort?email=${inputEmail}`);
+    const response = await fetch(`http://localhost:3000/userData?email=${inputEmail}`);
     const userData = await response.json();
-    const passwordDb = userData[0].selection;
+    const passwordDb = userData[0].Passwort;
     console.log(passwordDb);
     console.log(userData);
     

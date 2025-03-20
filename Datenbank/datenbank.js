@@ -34,9 +34,9 @@ function executeQuery(sql, params, callback) {
   });
 }
 
-app.get('/passwort/', (req, res) => {
+app.get('/userData', (req, res) => {
   const email = req.query.email;
-  const sql = 'CALL get_Passwort(?)';
+  const sql = 'CALL get_UserData(?)';
 
   executeQuery(sql, [email], (err, results) => {
     if (err) {
