@@ -73,11 +73,20 @@ CREATE TABLE IF NOT EXISTS `buchungen_zimmer` (
   CONSTRAINT `buchungen_zimmer_ibfk_2` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `buchungen_zimmer_ibfk_3` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`),
   CONSTRAINT `buchungen_zimmer_ibfk_4` FOREIGN KEY (`RechnungID`) REFERENCES `rechnungen` (`RechnungID`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.buchungen_zimmer: ~1 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.buchungen_zimmer: ~10 rows (ungefähr)
 INSERT INTO `buchungen_zimmer` (`Buchungen_ZimmerID`, `ZimmerID`, `KundeID`, `MitarbeiterID`, `RechnungID`, `Anreise`, `Abreise`, `Storniert`, `Gezahlt`) VALUES
-	(1, 2, 2, 11, 1, '2025-03-20 00:00:00', '2025-03-25 00:00:00', 0, 0);
+	(1, 2, 2, 11, 1, '2025-03-20 00:00:00', '2025-03-25 00:00:00', 0, 0),
+	(2, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-25 00:00:00', 0, 0),
+	(3, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-25 00:00:00', 0, 0),
+	(4, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(5, 6, 3, 11, 6, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(6, 6, 3, 11, 6, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(7, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(8, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(9, 6, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(10, 6, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0);
 
 -- Exportiere Struktur von Tabelle funrest.kunde
 CREATE TABLE IF NOT EXISTS `kunde` (
@@ -152,14 +161,16 @@ CREATE TABLE IF NOT EXISTS `rechnungen` (
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rechnungen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rechnungen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rechnungen: ~4 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.rechnungen: ~6 rows (ungefähr)
 INSERT INTO `rechnungen` (`RechnungID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`) VALUES
 	(1, 2, 11, '2025-03-18'),
 	(2, 4, 5, '2025-03-18'),
 	(3, 1, 2, '2025-03-20'),
-	(4, 2, 2, '2025-03-20');
+	(4, 2, 2, '2025-03-20'),
+	(5, 4, 11, '2025-03-20'),
+	(6, 3, 11, '2025-03-20');
 
 -- Exportiere Struktur von Tabelle funrest.restaurant_tische
 CREATE TABLE IF NOT EXISTS `restaurant_tische` (
@@ -875,6 +886,7 @@ DELIMITER ;
 -- Exportiere Struktur von Prozedur funrest.data_Rezensionen
 DELIMITER //
 CREATE PROCEDURE `data_Rezensionen`()
+    COMMENT 'Testdaten für die Tabelle Rezensionen'
 BEGIN
 INSERT INTO rezensionen (KundeID, MitarbeiterID, Erstelldatum, Anzahl_Sterne, Titel, Inhalt, Genehmigt) VALUES
 (1, 1, '2025-01-12', 5, 'Exzellenter Aufenthalt', 'Ich war äußerst zufrieden mit dem Service. Das Personal war freundlich und zuvorkommend. Die Zimmer waren sauber und komfortabel.', TRUE),
@@ -1266,42 +1278,13 @@ BEGIN
 END//
 DELIMITER ;
 
--- Exportiere Struktur von Prozedur funrest.get_Passwort
-DELIMITER //
-CREATE PROCEDURE `get_Passwort`(
-	IN `p_Email` VARCHAR(100)
-)
-    COMMENT 'Bekommt die email des Kunden/Mitarbeiter und gibt das Passwort zurück, dazu wird noch geschaut wenn es ein Mitarbeiter ist ob er den Adminstatus hat'
-BEGIN
-
-    DECLARE selection VARCHAR(50);
-    DECLARE adminStatus BOOL;
-
-
-    SELECT Passwort INTO selection
-    FROM Kunde
-    WHERE Email = p_Email;
-
-
-    IF selection IS NULL THEN
-        SELECT Passwort, IstAdmin INTO selection, adminStatus
-        FROM Mitarbeiter
-        WHERE Email = p_Email;
-    END IF;
-
-
-    SELECT selection, adminStatus;
-	 
-END//
-DELIMITER ;
-
 -- Exportiere Struktur von Prozedur funrest.get_Rechnungen
 DELIMITER //
 CREATE PROCEDURE `get_Rechnungen`()
     COMMENT 'Hier werden einfach alle Rechnungen mit passenden Daten dazu ausgegeben'
 BEGIN
 
-SELECT r.RechnungID,r.Erstelldatum, bz.Anreise, bz.Abreise, bz.Gezahlt, k.Vorname, k.Nachname, k.Anrede, k.Ort, k.Straße, k.PLZ, k.Hausnummer, k.Email,
+SELECT r.RechnungID,r.Erstelldatum, bz.Anreise, bz.Abreise, k.Vorname, k.Nachname,k.Email, z.Zimmerart, z.Kategorie,
 			DATEDIFF(bz.Abreise, bz.Anreise) AS Aufenthaltstage, -- Berechnung der Aufenthaltsdauer
     	   zp.Preis * DATEDIFF(bz.Abreise, bz.Anreise) AS Gesamtpreis -- Gesamtpreisberechnung
 FROM rechnungen AS r
@@ -1309,8 +1292,8 @@ INNER JOIN buchungen_zimmer AS bz ON bz.RechnungID = r.RechnungID
 INNER JOIN kunde AS k ON k.KundeID = r.KundeID
 INNER JOIN zimmer AS z ON z.ZimmerID = bz.ZimmerID
 INNER JOIN zimmer_preis zp ON zp.PreisID = z.Preiskategorie
-
-WHERE bz.Storniert = FALSE;
+WHERE bz.Storniert = FALSE
+order BY r.RechnungID;
 
 END//
 DELIMITER ;
@@ -1342,6 +1325,44 @@ BEGIN
 END//
 DELIMITER ;
 
+-- Exportiere Struktur von Prozedur funrest.get_UserData
+DELIMITER //
+CREATE PROCEDURE `get_UserData`(
+	IN `p_Email` VARCHAR(100)
+)
+    COMMENT 'Bekommt die email des Kunden/Mitarbeiter und gibt das Passwort sowie die ID zurück, dazu wird noch geschaut wenn es ein Mitarbeiter ist ob er den Adminstatus hat'
+BEGIN
+
+    DECLARE selection VARCHAR(50);
+    DECLARE ID INT;
+    DECLARE adminStatus BOOL;
+
+	 SELECT 0 INTO adminStatus;
+	
+    SELECT Passwort, KundeID INTO selection, ID
+    FROM Kunde
+    WHERE Email = p_Email;
+
+
+    IF selection IS NULL THEN
+        SELECT Passwort, IstAdmin, MitarbeiterID INTO selection, adminStatus, ID
+        FROM Mitarbeiter
+        WHERE Email = p_Email;
+    END IF;
+
+
+   
+	 
+	IF selection IS NOT null THEN
+   	 
+   SELECT selection AS Passwort, adminStatus, ID;
+	
+    ELSE
+   	SELECT FALSE AS Konto; -- hat kein Konto
+    END IF;
+END//
+DELIMITER ;
+
 -- Exportiere Struktur von Prozedur funrest.get_Zimmer_preis
 DELIMITER //
 CREATE PROCEDURE `get_Zimmer_preis`(
@@ -1350,6 +1371,7 @@ CREATE PROCEDURE `get_Zimmer_preis`(
 	IN `p_Kategorie` VARCHAR(50),
 	IN `p_Zimmerart` VARCHAR(50)
 )
+    COMMENT 'gibt anhand der Übergabeparameter den Preis sowie den Gesamtpreis für das Zimmer zurück'
 BEGIN
 
 SELECT 	zp.Preis,
@@ -1398,8 +1420,8 @@ CREATE PROCEDURE `new_Buchungen_Zimmer`(
 	IN `p_KundeID` INT,
 	IN `p_MitarbeiterID` INT,
 	IN `p_RechnungID` INT,
-	IN `p_Anreise` DATETIME,
-	IN `p_Abreise` DATETIME,
+	IN `p_Anreise` DATE,
+	IN `p_Abreise` DATE,
 	IN `p_Storniert` BOOL,
 	IN `p_Gezahlt` BOOL
 )
@@ -1527,6 +1549,7 @@ CREATE PROCEDURE `new_Rezension`(
 	IN `p_Titel` VARCHAR(100),
 	IN `p_Inhalt` VARCHAR(60000)
 )
+    COMMENT 'Erstellet eine Rezension anhand der Übergabeparameter'
 BEGIN
     INSERT INTO Rezensionen (
         KundeID,
@@ -1581,7 +1604,7 @@ CREATE PROCEDURE `set_free_Tisch`(
 	IN `p_Buchungsdatum` DATETIME,
 	IN `p_KundeID` INT
 )
-    COMMENT 'Anhand der Übergabeparameter wird ein Tisch der Frei ist gesucht'
+    COMMENT 'Anhand der Übergabeparameter wird ein Tisch der Frei ist gesucht und wird direkt gebucht'
 BEGIN	
 
     DECLARE Mitarbeiter_Tag INT;
@@ -1591,13 +1614,13 @@ BEGIN
     
     SELECT MitarbeiterID INTO Mitarbeiter_Tag
 	 FROM mitarbeiter AS m
-	 WHERE m.Restaurant_Dienst = DAYOFWEEK(p_Buchungsdatum);  -- prüft welcher Mitarbeiter an diesem Tag schicht hat und weißt ihm das Recht zu
+	 WHERE m.Restaurant_Dienst = DAYOFWEEK(p_Buchungsdatum);  -- prüft welcher Mitarbeiter an diesem Tag schicht hat und weißt ihm den Tisch zu
 
 
 	SELECT rt.TischID INTO Freier_TischID
 	FROM restaurant_tische AS rt
 	WHERE rt.Anzahl_Plätze = p_Anzahl_Plätze
-	AND rt.TischID NOT IN (   
+	AND rt.TischID NOT IN (    -- Hier wird geschaut ob die TischID nicht in den Buchungen_Tisch vorkommt mit dem aktuellen Buchungszeitpunkt sowie Sitzplatzanzahl 
     SELECT bt.TischID
     FROM restaurant_tische AS rt
     inner JOIN buchungen_tisch AS bt ON rt.TischID = bt.TischID
@@ -1610,9 +1633,7 @@ BEGIN
 
    IF Freier_TischID IS NOT null THEN
    	SELECT TRUE AS Buchung; 
-   	
-		CALL new_Rechnungen(p_KundeID, Mitarbeiter_Tag, LastID);
-   	
+   	   	
    	CALL new_Buchungen_Tisch(Freier_TischID, p_KundeID, Mitarbeiter_Tag, p_Buchungsdatum, FALSE);
 
     ELSE
@@ -1628,6 +1649,7 @@ CREATE PROCEDURE `set_Rezensionen_Genehmigt`(
 	IN `p_RezensionenID` INT,
 	IN `p_MitarbeiterID` INT
 )
+    COMMENT 'setzt'
 BEGIN
     UPDATE Rezensionen
     SET Genehmigt = TRUE, MitarbeiterID = p_MitarbeiterID
