@@ -97,6 +97,17 @@ img {
     box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.139);
 }
 
+.rezension {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333; /* Sicherstellen, dass die Schriftfarbe sichtbar ist */
+    max-width: 700px; /* Maximale Breite der Rezensionen */
+    width: 100%; /* Rezensionen nehmen die volle Breite des Containers ein */
+}
+
 /* Stile für den Rezension erstellen Button */
 #rezension-erstellen {
     background-color: #000000;
@@ -125,4 +136,18 @@ img {
 #header-container h1 {
     flex: 1;
     text-align: center;
+}
+
+/* Stile für den Container für Rezensionen */
+#rezension-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333; /* Sicherstellen, dass die Schriftfarbe sichtbar ist */
 }
