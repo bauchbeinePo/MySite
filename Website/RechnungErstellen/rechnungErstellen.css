@@ -19,13 +19,16 @@ body {
 #logo {
     width: 250px;
     height: 50px;
-    display: flex;
-    left: 100;
-    background-color: #000000;
-    align-items: center;
 }
 
 /* Stile für das Menü */
+#menu {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+/* Stile für die Menüelemente */
 #menu ul {
     list-style: none;
     margin: 0;
@@ -34,7 +37,7 @@ body {
     align-items: center;
 }
 
-/* Stile für die Menüelemente */
+/* Stile für die Links im Menü */
 #menu ul li {
     margin: 0 25px;
 }
@@ -59,78 +62,70 @@ button {
     border-radius: 4px;
     border-style: none;
     padding: 8px;
-    margin: 7px;
 }
 
 /* Hover-Effekt für Buttons */
-button:hover, #submit:hover {
+button:hover {
     background-color: #085eb5;
 }
 
 /* Active-Effekt für Buttons */
-button:active, #submit:active {
+button:active {
     background-color: #4fa7ff;
 }
 
-/* Stile für den Hauptinhalt */
-#screen {
-    margin-top: -10%;
-    font-size: 1.2em;
-    align-items: center;
-    height: 100vh;
+/* Stile für den Rechnung erstellen Button */
+#rechnung-erstellen {
+    background-color: #000000;
+    margin-left: 190%;
+}
+
+/* Stile für den Rechnung erstellen Link */
+#rechnung-erstellen-link {
     display: flex;
     justify-content: center;
+    align-items: center;
+    position: relative;
 }
 
-/* Stile für Eingabefelder */
-input {
-    font-size: 1.2em;
-    border-radius: 10px;
-    width: 300px;
-    height: auto;
+/* Hover-Effekt für den Rechnung erstellen Button */
+#rechnung-erstellen:hover {
+    background-color: #505050;
 }
 
-/* Stile für Labels */
-label {
-    text-align: left;
-    font-size: 0.8em;
-    margin-bottom: 10px;
+/* Active-Effekt für den Rechnung erstellen Button */
+#rechnung-erstellen:active {
+    background-color: #b6b6b6;
 }
 
-/* Stile für den Submit-Button */
-#submit {
-    background-color: #0d86ff;
-    color: white;
-    font-size: 1.1em;
-    border-radius: 7px;
-    margin-bottom: 10px;
-    padding: 6px 25px;
-    max-width: 190px;
-}
-
-/* Stile für Links */
-a {
-    color: #0d86ff;
-    text-decoration: none;
-}
-
-/* Stile für Dropdown-Menüs */
-select {
-    font-size: 1.2em;
-    border-radius: 10px;
-    width: 300px;
-    height: auto;
-    border: 1.6px solid #000000;
-}
-
-/* Stile für das Von-Datum */
-#vonTag {
+/* Stile für die Hauptüberschrift */
+#header-container h1 {
     flex: 1;
-    width: 45%;
+    text-align: center;
 }
 
-/* Stile für das Bis-Datum */
-#bisTag {
-    flex: 1;
-    width: 45%;
+/* Stile für den Container für Rechnungen */
+#rechnung-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    color: #333; /* Sicherstellen, dass die Schriftfarbe sichtbar ist */
+}
+
+/* Stile für einzelne Rechnungen */
+.rechnung {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    color: #333; /* Sicherstellen, dass die Schriftfarbe sichtbar ist */
+    max-width: 600px; /* Maximale Breite der Rechnungen */
+    width: 100%; /* Rechnungen nehmen die volle Breite des Containers ein */
 }

@@ -1,27 +1,26 @@
 const submitButton = document.getElementById('submit');
-const von = document.getElementById('vonTag');
-const bis = document.getElementById('bisTag');
-const zimmerTyp = document.getElementById('zimmerTyp');
-const zimmerArt = document.getElementById('zimmerArt');
 
-submitButton.onclick = function getFormData() {
-    if(von.value  > bis.value) {
-        alert("Von-Datum muss vor Bis-Datum liegen!");
-    } else {
-        localStorage.setItem('vonDate', von.value);
-        localStorage.setItem('bisDate', bis.value);
-        localStorage.setItem('zimmerTyp', zimmerTyp);
-        localStorage.setItem('zimmerArt', zimmerArt);
-        window.location.href = 'zimmerAnzeigen.html';
-        
-    }
-    console.log("test");
-    getZimmerData(vonDate, bisDate, zimmerTyp, zimmerArt);
-}
+document.getElementById('submit').addEventListener('click', function(event) {
+    getZimmerData();
+});
 
-async function getZimmerData(vonDate, bisDate, zimmerTyp, zimmerArt) {
-    const response = await fetch('http://localhost:3000/zimmer?anreise=${vonDate}&abreise=${bisDate}&kategorie=${zimmerTyp}&zimmerart=${zimmerArt}');
+async function getZimmerData() {
+    const von = document.getElementById('vonTag').value;
+    const bis = document.getElementById('bisTag').value;
+    const kategorie = document.getElementById('kategorie').value;
+    const zimmerArt = document.getElementById('zimmerArt').value;
+    
+    const response = await fetch(`http://localhost:3000/zimmer?anreise=${von}&abreise=${bis}&kategorie=${kategorie}&zimmerart=${zimmerArt}`);
     const zimmerData = await response.json();
-    alert(zimmerData);
-    return zimmerData;
+    
+    if (zimmerData.buchung !== 0 && zimmerData.buchung !== null) {
+        localStorage.setItem('vonTag', von);
+        localStorage.setItem('bisTag', bis);
+        localStorage.setItem('kategorie', kategorie);
+        localStorage.setItem('zimmerArt', zimmerArt);
+        window.location.href = '../ZimmerAnzeigen/zimmerAnzeigen.html';
+    } else {
+        console.log('Keine Buchung verfügbar');
+    }
+
 }
