@@ -1,20 +1,28 @@
 document.addEventListener("DOMContentLoaded", function() {
     console.log("DOM vollständig geladen und analysiert");
 
-    // Beispielrechnungen hinzufügen
-    addRechnung("Rechnung 1", "01.01.2025", "100,00 €");
-    addRechnung("Rechnung 2", "02.01.2025", "200,00 €");
-    addRechnung("Rechnung 3", "03.01.2025", "300,00 €");
-    addRechnung("Rechnung 4", "04.01.2025", "400,00 €");
-    addRechnung("Rechnung 5", "05.01.2025", "500,00 €");
-    addRechnung("Rechnung 6", "06.01.2025", "600,00 €");
-    addRechnung("Rechnung 7", "07.01.2025", "700,00 €");
-    addRechnung("Rechnung 8", "08.01.2025", "800,00 €");
-    addRechnung("Rechnung 9", "09.01.2025", "900,00 €");
-    addRechnung("Rechnung 10", "10.01.2025", "1000,00 €");
+    fetch('http://localhost:3000/rechnungen')
+    .then(response => response.json())
+    .then(data => {
+        data.forEach(rechnung => {
+            addRechnung(
+                `Rechnung ${rechnung.RechnungID}`,
+                new Date(rechnung.Erstelldatum).toLocaleDateString('de-DE'),
+                `${rechnung.Gesamtpreis.toFixed(2).replace('.', ',')} €`,
+                rechnung.Zimmerart,
+                rechnung.Aufenthaltstage,
+                new Date(rechnung.Anreise).toLocaleDateString('de-DE'),
+                new Date(rechnung.Abreise).toLocaleDateString('de-DE'),
+                rechnung.Kategorie, 
+                rechnung.Vorname,
+                rechnung.Nachname
+            );
+        });
+    })
+    .catch(error => console.error('Fehler beim Abrufen der Rechnungen:', error));
 });
 
-function addRechnung(titel, datum, betrag) {
+function addRechnung(titel, datum, betrag, zimmerart, aufenthaltstage, anreise, abreise, kategorie, vorname, nachname) {
     console.log(`Füge Rechnung hinzu: ${titel}, Datum: ${datum}, Betrag: ${betrag}`);
 
     const rechnungContainer = document.getElementById("rechnung-container");
@@ -35,9 +43,40 @@ function addRechnung(titel, datum, betrag) {
     rechnungDatum.textContent = `Datum: ${datum}`;
     rechnungDiv.appendChild(rechnungDatum);
 
+    const rechnungName = document.createElement("p");
+    rechnungName.textContent = `Name: ${vorname} ${nachname}`;
+    rechnungDiv.appendChild(rechnungName);
+
+    const rechnungAufenthaltstage = document.createElement("p");
+    rechnungAufenthaltstage.textContent = `Aufenthaltstage: ${aufenthaltstage}`;
+    rechnungDiv.appendChild(rechnungAufenthaltstage);
+
+    const rechnungAnreise = document.createElement("p");
+    rechnungAnreise.textContent = `Anreise: ${anreise}`;
+    rechnungDiv.appendChild(rechnungAnreise);
+
+    const rechnungAbreise = document.createElement("p");
+    rechnungAbreise.textContent = `Abreise: ${abreise}`;
+    rechnungDiv.appendChild(rechnungAbreise);
+
+    const rechnungZimmerart = document.createElement("p");
+    rechnungZimmerart.textContent = `Zimmerart: ${zimmerart}`;
+    rechnungDiv.appendChild(rechnungZimmerart);
+
+    const rechnungKategorie = document.createElement("p");
+    rechnungKategorie.textContent = `Kategorie: ${kategorie}`;
+    rechnungDiv.appendChild(rechnungKategorie);
+
     const rechnungBetrag = document.createElement("p");
     rechnungBetrag.textContent = `Betrag: ${betrag}`;
     rechnungDiv.appendChild(rechnungBetrag);
+
+    const rechnungDrucken = document.createElement("button");
+    rechnungDrucken.textContent = "Rechnung drucken";
+    rechnungDrucken.addEventListener("click", function() {
+        window.print();
+    });
+    rechnungDiv.appendChild(rechnungDrucken);
 
     rechnungContainer.appendChild(rechnungDiv);
     console.log("Rechnung erfolgreich hinzugefügt");

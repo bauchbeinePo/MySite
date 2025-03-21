@@ -42,7 +42,7 @@ label {
 }
 
 /* Hover-Effekt für Buttons und Links */
-button:hover, #submit:hover, a:hover {
+button:hover, #submit:hover{
     background-color: #085eb5;
 }
 

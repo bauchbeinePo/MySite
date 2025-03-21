@@ -115,10 +115,10 @@ app.get('/buchung', (req, res) => {
 });
 
 app.get('/rezensionen/genehmigen', (req, res) => {
-  const { rezensionenID } = req.query;
-  const sql = 'CALL set_Rezensionen_genehmigt(?)';
+  const { rezensionenID, mitarbeiterID } = req.query;
+  const sql = 'CALL set_Rezensionen_Genehmigt(?, ?)';
 
-  executeQuery(sql, [rezensionenID], (err, results) => {
+  executeQuery(sql, [rezensionenID, mitarbeiterID], (err, results) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
@@ -128,7 +128,7 @@ app.get('/rezensionen/genehmigen', (req, res) => {
 
 app.get('/rezensionen/erstellen', (req, res) => {
   const { kundeID, anzahlSterne, titel, inhalt } = req.query;
-  const sql = 'CALL new_Rezension(?, ?, ?, ?, ?)';
+  const sql = 'CALL new_Rezension(?, ?, ?, ?)';
 
   executeQuery(sql, [kundeID, anzahlSterne, titel, inhalt], (err, results) => {
     if (err) {
@@ -140,7 +140,7 @@ app.get('/rezensionen/erstellen', (req, res) => {
 
 app.get('/rezensionen/loeschen', (req, res) => {
   const { rezensionenID } = req.query;
-  const sql = 'CALL del_Rezension(?)';
+  const sql = 'CALL del_Rezensionen(?)';
 
   executeQuery(sql, [rezensionenID], (err, results) => {
     if (err) {
@@ -169,7 +169,7 @@ app.get('/rechnungen', (req, res) => {
     if (err) {
       return res.status(500).json({ error: err.message });
     }
-    res.json(results); // Ergebnisse zurückgeben
+    res.json(results[0]); // Ergebnisse zurückgeben
   });
 });
 

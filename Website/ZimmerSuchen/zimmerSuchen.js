@@ -18,7 +18,7 @@ async function getZimmerData() {
         localStorage.setItem('bisTag', bis);
         localStorage.setItem('kategorie', kategorie);
         localStorage.setItem('zimmerArt', zimmerArt);
-        window.location.href = '../ZimmerAnzeigen/zimmerAnzeigen.html';
+        localStorage.setItem('zimmerID', zimmerData[0].p_ZimmerID);
     } else {
         console.log('Keine Buchung verfügbar');
     }

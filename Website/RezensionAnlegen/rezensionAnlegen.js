@@ -1,17 +1,17 @@
-document.addEventListener('DOMContentLoaded', function() {
-    const form = document.getElementById('rezensionForm');
-    
-    form.addEventListener('submit', function(event) {
-        event.preventDefault(); // Verhindert das Standard-Formular-Absenden
+document.getElementById('submit').addEventListener('click', function(event) {
 
-        // Werte der Eingabefelder holen
-        const titel = document.getElementById('titel').value;
-        const inhalt = document.getElementById('inhalt').value;
-        const bewertung = document.getElementById('bewertung').value;
+    // Werte der Eingabefelder holen
+    const sterne = document.getElementById('sterne').value;
+    const titel = document.getElementById('titel').value;
+    const kommentar = document.getElementById('kommentar').value;
+    const kundeID = localStorage.getItem('kundeID');
 
-        // Werte in der Konsole ausgeben
-        console.log('Titel:', titel);
-        console.log('Inhalt:', inhalt);
-        console.log('Bewertung:', bewertung);
-    });
+    rezensionErstellen(kundeID, sterne, titel, kommentar);
 });
+
+async function rezensionErstellen(kundeID, sterne, titel, kommentar) {
+
+    const response = await fetch(`http://localhost:3000/rezensionen/erstellen?kundeID=${kundeID}&anzahlSterne=${sterne}&titel=${titel}&inhalt=${kommentar}`);
+    const rezension = await response.json();
+    console.log(rezension);
+}

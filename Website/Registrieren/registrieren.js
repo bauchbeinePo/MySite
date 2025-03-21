@@ -1,7 +1,6 @@
 const submitButton = document.getElementById('submit');
 
-submitButton.onclick = async function hashString(event) {
-    event.preventDefault();
+submitButton.onclick = async function hashString() {
 
     const encoder = new TextEncoder();
     const data = encoder.encode(document.getElementById('password').value);
