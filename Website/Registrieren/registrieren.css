@@ -21,7 +21,7 @@ body {
 input {
     font-size: 1.2em;
     border-radius: 10px;
-    width: 300px;
+    width: 20%;
     height: auto;
 }
 
@@ -73,13 +73,13 @@ a {
 /* Stile für die Hausnummer-Eingabe */
 #hausnummer {
     flex: 1;
-    width: 17%;
+    width: 30%;
 }
 
 /* Stile für die Straße-Eingabe */
 #strasse {
     flex: 1;
-    width: 33%;
+    width: 170%;
 }
 
 /* Stile für Dropdown-Menüs */
