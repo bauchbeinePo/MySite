@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS Buchungen_Tisch (
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID),
     FOREIGN KEY (MitarbeiterID) REFERENCES Mitarbeiter(MitarbeiterID),
     Zeitpunkt DATETIME,
-    Stoniert BOOL
+    Storniert BOOL
     
 );
 
