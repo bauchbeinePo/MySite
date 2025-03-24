@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `buchungen_tisch` (
   `KundeID` int(11) DEFAULT NULL,
   `MitarbeiterID` int(11) DEFAULT NULL,
   `Zeitpunkt` datetime DEFAULT NULL,
-  `Stoniert` tinyint(1) DEFAULT NULL,
+  `Storniert` tinyint(1) DEFAULT NULL,
   PRIMARY KEY (`Buchungen_TischID`),
   KEY `TischID` (`TischID`),
   KEY `KundeID` (`KundeID`),
@@ -34,10 +34,10 @@ CREATE TABLE IF NOT EXISTS `buchungen_tisch` (
   CONSTRAINT `buchungen_tisch_ibfk_1` FOREIGN KEY (`TischID`) REFERENCES `restaurant_tische` (`TischID`),
   CONSTRAINT `buchungen_tisch_ibfk_2` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `buchungen_tisch_ibfk_3` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.buchungen_tisch: ~14 rows (ungefähr)
-INSERT INTO `buchungen_tisch` (`Buchungen_TischID`, `TischID`, `KundeID`, `MitarbeiterID`, `Zeitpunkt`, `Stoniert`) VALUES
+-- Exportiere Daten aus Tabelle funrest.buchungen_tisch: ~16 rows (ungefähr)
+INSERT INTO `buchungen_tisch` (`Buchungen_TischID`, `TischID`, `KundeID`, `MitarbeiterID`, `Zeitpunkt`, `Storniert`) VALUES
 	(1, 3, 4, 5, '2025-12-12 00:00:00', 0),
 	(2, 13, 4, 5, '2025-12-12 00:00:00', 0),
 	(3, 23, 4, 5, '2025-12-12 00:00:00', 0),
@@ -51,7 +51,9 @@ INSERT INTO `buchungen_tisch` (`Buchungen_TischID`, `TischID`, `KundeID`, `Mitar
 	(11, 22, 4, 5, '2025-12-12 00:00:00', 0),
 	(12, 27, 4, 5, '2025-12-12 00:00:00', 0),
 	(13, 32, 4, 5, '2025-12-12 00:00:00', 0),
-	(14, 37, 4, 5, '2025-12-12 00:00:00', 0);
+	(14, 37, 4, 5, '2025-12-12 00:00:00', 0),
+	(16, 4, 1, 7, '2025-03-23 19:20:00', 0),
+	(17, 5, 1, 7, '2025-03-23 19:20:00', 0);
 
 -- Exportiere Struktur von Tabelle funrest.buchungen_zimmer
 CREATE TABLE IF NOT EXISTS `buchungen_zimmer` (
@@ -73,9 +75,9 @@ CREATE TABLE IF NOT EXISTS `buchungen_zimmer` (
   CONSTRAINT `buchungen_zimmer_ibfk_2` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `buchungen_zimmer_ibfk_3` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`),
   CONSTRAINT `buchungen_zimmer_ibfk_4` FOREIGN KEY (`RechnungID`) REFERENCES `rechnungen` (`RechnungID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=13 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.buchungen_zimmer: ~10 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.buchungen_zimmer: ~12 rows (ungefähr)
 INSERT INTO `buchungen_zimmer` (`Buchungen_ZimmerID`, `ZimmerID`, `KundeID`, `MitarbeiterID`, `RechnungID`, `Anreise`, `Abreise`, `Storniert`, `Gezahlt`) VALUES
 	(1, 2, 2, 11, 1, '2025-03-20 00:00:00', '2025-03-25 00:00:00', 0, 0),
 	(2, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-25 00:00:00', 0, 0),
@@ -86,7 +88,9 @@ INSERT INTO `buchungen_zimmer` (`Buchungen_ZimmerID`, `ZimmerID`, `KundeID`, `Mi
 	(7, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
 	(8, 4, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
 	(9, 6, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
-	(10, 6, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0);
+	(10, 6, 4, 11, 5, '2025-03-20 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(11, 8, 8, NULL, 7, '0000-00-00 00:00:00', '2025-03-24 00:00:00', 0, 0),
+	(12, 8, 8, NULL, 8, '0000-00-00 00:00:00', '2025-03-24 00:00:00', 0, 0);
 
 -- Exportiere Struktur von Tabelle funrest.kunde
 CREATE TABLE IF NOT EXISTS `kunde` (
@@ -161,16 +165,18 @@ CREATE TABLE IF NOT EXISTS `rechnungen` (
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rechnungen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rechnungen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rechnungen: ~6 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.rechnungen: ~8 rows (ungefähr)
 INSERT INTO `rechnungen` (`RechnungID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`) VALUES
 	(1, 2, 11, '2025-03-18'),
 	(2, 4, 5, '2025-03-18'),
 	(3, 1, 2, '2025-03-20'),
 	(4, 2, 2, '2025-03-20'),
 	(5, 4, 11, '2025-03-20'),
-	(6, 3, 11, '2025-03-20');
+	(6, 3, 11, '2025-03-20'),
+	(7, 8, NULL, '2025-03-20'),
+	(8, 8, NULL, '2025-03-20');
 
 -- Exportiere Struktur von Tabelle funrest.restaurant_tische
 CREATE TABLE IF NOT EXISTS `restaurant_tische` (
@@ -237,9 +243,9 @@ CREATE TABLE IF NOT EXISTS `rezensionen` (
   KEY `MitarbeiterID` (`MitarbeiterID`),
   CONSTRAINT `rezensionen_ibfk_1` FOREIGN KEY (`KundeID`) REFERENCES `kunde` (`KundeID`),
   CONSTRAINT `rezensionen_ibfk_2` FOREIGN KEY (`MitarbeiterID`) REFERENCES `mitarbeiter` (`MitarbeiterID`)
-) ENGINE=InnoDB AUTO_INCREMENT=11 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 
--- Exportiere Daten aus Tabelle funrest.rezensionen: ~9 rows (ungefähr)
+-- Exportiere Daten aus Tabelle funrest.rezensionen: ~11 rows (ungefähr)
 INSERT INTO `rezensionen` (`RezensionenID`, `KundeID`, `MitarbeiterID`, `Erstelldatum`, `Anzahl_Sterne`, `Titel`, `Inhalt`, `Genehmigt`) VALUES
 	(2, 2, 2, '2025-02-05', 3, 'Gut, aber mit Mängeln', 'Der Aufenthalt war insgesamt gut, jedoch war das Badezimmer nicht ganz sauber und die Wartezeit beim Check-in war lang.', 1),
 	(3, 3, 1, '2025-03-10', 4, 'Sehr guter Service', 'Das Personal war überaus hilfsbereit, und das Frühstück war köstlich. Kleine Probleme mit dem WLAN.', 1),
@@ -249,7 +255,9 @@ INSERT INTO `rezensionen` (`RezensionenID`, `KundeID`, `MitarbeiterID`, `Erstell
 	(7, 7, 1, '2025-01-30', 4, 'Guter Aufenthalt', 'Ich habe meinen Aufenthalt genossen. Der Poolbereich war fantastisch, aber das Essen könnte besser sein.', 1),
 	(8, 8, NULL, '2025-02-18', 3, 'In Ordnung, mit Verbesserungspotenzial', 'Das Zimmer war sauber, aber der Service könnte aufmerksamer sein. Das Frühstück war mittelmäßig.', 0),
 	(9, 9, 1, '2025-03-05', 5, 'Einfach großartig!', 'Alles verlief reibungslos. Vom Check-in bis zum Check-out ein wunderbares Erlebnis. Gerne wieder!', 1),
-	(10, 10, NULL, '2025-01-18', 2, 'Nicht zufriedenstellend', 'Die Sauberkeit ließ zu wünschen übrig, und das Personal war unaufmerksam. Verbesserungen sind dringend nötig.', 0);
+	(10, 10, NULL, '2025-01-18', 2, 'Nicht zufriedenstellend', 'Die Sauberkeit ließ zu wünschen übrig, und das Personal war unaufmerksam. Verbesserungen sind dringend nötig.', 0),
+	(13, 1, NULL, '2025-03-23', 5, 'dasdsa', 'dadsa', 0),
+	(14, 1, NULL, '2025-03-23', 5, 'lkjlk', 'adsdsa', 0);
 
 -- Exportiere Struktur von Tabelle funrest.zimmer
 CREATE TABLE IF NOT EXISTS `zimmer` (
@@ -603,7 +611,7 @@ CREATE TABLE IF NOT EXISTS Buchungen_Tisch (
     FOREIGN KEY (KundeID) REFERENCES Kunde(KundeID),
     FOREIGN KEY (MitarbeiterID) REFERENCES Mitarbeiter(MitarbeiterID),
     Zeitpunkt DATETIME,
-    Stoniert BOOL
+    Storniert BOOL
     
 );
 
@@ -1293,7 +1301,7 @@ INNER JOIN kunde AS k ON k.KundeID = r.KundeID
 INNER JOIN zimmer AS z ON z.ZimmerID = bz.ZimmerID
 INNER JOIN zimmer_preis zp ON zp.PreisID = z.Preiskategorie
 WHERE bz.Storniert = FALSE
-order BY r.RechnungID;
+ORDER BY r.Erstelldatum DESC, r.RechnungID;
 
 END//
 DELIMITER ;
@@ -1303,8 +1311,9 @@ DELIMITER //
 CREATE PROCEDURE `get_Rezensionen_Genehmigt`()
     COMMENT 'Hier werden alle Rezensionen die Genehmigt wurden selected'
 BEGIN
-    SELECT *
+    SELECT r.*, k.Vorname, k.Nachname
     FROM rezensionen AS r
+    INNER JOIN kunde AS k ON k.KundeID = r.KundeID
     WHERE r.Genehmigt = TRUE 
     ORDER BY Erstelldatum DESC;
 END//
@@ -1315,13 +1324,12 @@ DELIMITER //
 CREATE PROCEDURE `get_Rezensionen_Nicht_Genehmigt`()
     COMMENT 'Hier werden alle Rezensionen die noch nicht Genehmigt wurden selected'
 BEGIN
-
-   SELECT *
+    SELECT r.*, k.Vorname, k.Nachname
     FROM rezensionen AS r
+    INNER JOIN kunde AS k ON k.KundeID = r.KundeID
     WHERE r.Genehmigt = FALSE 
     ORDER BY Erstelldatum DESC
 	 LIMIT 1;
-    
 END//
 DELIMITER ;
 
@@ -1393,7 +1401,7 @@ CREATE PROCEDURE `new_Buchungen_Tisch`(
 	IN `p_KundeID` INT,
 	IN `p_MitarbeiterID` INT,
 	IN `p_Zeitpunkt` DATETIME,
-	IN `p_Stoniert` BOOL
+	IN `p_Storniert` BOOL
 )
     COMMENT 'Erstellet eine neue Buchungen_Tisch anhand der Übergabeparameter'
 BEGIN
@@ -1402,13 +1410,13 @@ BEGIN
         KundeID,
         MitarbeiterID,
         Zeitpunkt,
-        Stoniert
+        Storniert
     ) VALUES (
         p_TischID,
         p_KundeID,
         p_MitarbeiterID,
         p_Zeitpunkt,
-        p_Stoniert
+        p_Storniert
     );
 END//
 DELIMITER ;
