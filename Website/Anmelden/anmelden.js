@@ -55,7 +55,16 @@ async function getPasswordFromDb(inputEmail, inputPassword, event) {
     }
 }
 
-function vergleicheEingaben(inputPassword, passwordDb) {
+async function vergleicheEingaben(inputPassword, passwordDb) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(inputPassword);
+
+    // Erstellen des SHA-256-Hashs
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+
+    // Buffer in Hex-String umwandeln
+    const hashArray = Array.from(new Uint8Array(hashBuffer));
+    const hashHex = hashArray.map(b => b.toString(16).padStart(2, '0')).join('');
     // Eingabewerte mit den vorgegebenen Zeichenketten vergleichen
-    return inputPassword === passwordDb;
+    return hashHex === passwordDb;
 }
